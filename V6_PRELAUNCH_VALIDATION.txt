@@ -1,0 +1,23 @@
+V6.0 PRE-LAUNCH VALIDATION
+Build: 2026-08-20
+
+1) Python compile check: PASS
+   trading_machine.py / settings.py / engine_window.py / machine_supervisor.py / offline_self_test.py
+
+2) Offline self-test: PASS
+   See SELF_TEST_RESULTS.txt.
+
+3) Existing V5.5 SQLite migration test on a temporary copy: PASS
+   session_family_memory bootstrap: 65 cells / 317 effective observations.
+   Existing DB was not reset.
+
+4) Scalp-first selector smoke test on retained data: PASS
+   BTCUSDm: eligible historical super_scalp candidates route through DEMO trial tier while no scalp is shadow-approved.
+   USOILm: eligible historical super_scalp candidate routes through DEMO trial tier.
+   XAUUSDm: no currently eligible historical scalp candidate, therefore safe fallback remains approved trend until V6 generates/validates scalp candidates. V6 does not fabricate a scalp edge.
+
+5) New scalp family signal/backtest smoke test on synthetic M1 data: PASS
+   super_scalp / scalp / micro_momentum / pullback_scalp / breakout_scalp / mean_revert_scalp all executed without missing-feature/key errors and produced finite trade metrics.
+
+6) DEMO safety retained:
+   Real/contest account hard block remains in code.

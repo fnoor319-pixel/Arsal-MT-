@@ -1,0 +1,10 @@
+V8.6 FOCUSED VERIFICATION PASSED
+
+- Python compile: institutional_alpha.py, trading_machine.py, settings.py
+- Local Quant candidate remains QUALIFIED after 16-entry paid-Luna shortlist soft cap.
+- api_quota_available becomes False instead of turning the candidate into an execution HOLD.
+- source=local_shortlist_cap is recognized by zero-token budget probe policy.
+- Strong test candidate:
+  local=88.04, micro=96.0, ER=+1.31R, P=0.49, BE=0.3125, edge=+0.1775
+  -> zero-token probe ALLOWED at risk_x=0.07
+- Probe daily/symbol caps and all downstream broker/risk locks remain.

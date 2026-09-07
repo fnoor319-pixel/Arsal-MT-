@@ -1,0 +1,76 @@
+SPARTAN-SCALPER-PRO V6.6 SMART SCALP BRAIN + COMPACT GPT
+=========================================================
+Scope: DEMO AUTOTRADE ONLY. Real/contest account hard-lock remains unchanged.
+
+WHY THIS UPDATE
+---------------
+The supplied V6.5 database is active, but the live funnel is starving before GPT:
+- 10k+ strategies exist, but zero fully shadow-approved scalp strategies for XAUUSDm/USOILm/BTCUSDm.
+- Last 24h decisions were dominated by NO_SIGNAL; GPT/Luna was rarely or never reached.
+- Pending backtest queue was above the configured throttle.
+
+V6.6 CHANGES
+------------
+1. Scalp-aware SuperLearner expectancy gate
+   - Uses reward:risk and expected-R for scalp decisions instead of relying on one high fixed P(win) cutoff.
+   - Blends model probability with adaptive, collective and session evidence.
+   - Safety/risk sizing still occurs deterministically after approval.
+
+2. Cleaner learning memory
+   - backtest_rejected and shadow_rejected research outcomes no longer poison execution memory.
+   - historical_validated and shadow_approved shadow outcomes receive reduced research weights.
+   - one-time V6.6 execution-memory rebuild is wired into the DEMO engine.
+
+3. Spartan confluence normalization
+   - Optional unavailable news/DOM evidence is treated as unknown, not as an automatic failed vote.
+   - Confluence is normalized against evidence actually available.
+   - Gold/Oil hard risk/session/market-quality gates remain.
+
+4. Compact GPT/Luna final reviewer
+   - One compact dynamic market packet is sent per materially new candidate.
+   - No conversation history is sent.
+   - Structured reply is intentionally short: confirm/hold, confidence, reason code, short reason.
+   - GPT remains a final reviewer only; it does not directly change lot size, SL/TP or safety limits.
+   - GPT context is now available for Gold, Oil and Crypto candidates that reach the final review stage.
+   - Existing material-state cache prevents repeated paid reviews of unchanged setups.
+
+5. Compact post-trade GPT learning
+   - Sends a small post-trade evidence packet.
+   - Produces a short diagnostic/hypothesis for journaling; it cannot autonomously rewrite live parameters.
+
+6. New-bar entry evaluation
+   - Entry intelligence can evaluate once per newly closed M1 bar instead of repeatedly logging the same candle.
+   - Position/trailing management remains independent.
+
+7. Diagnostics
+   - New 22_SCALP_HEALTH.bat / scalp_health.py reports strategy inventory, decision funnel, SuperLearner and GPT reach.
+
+VALIDATION COMPLETED
+--------------------
+- Python compile check: PASSED
+- Existing offline regression/self-test: PASSED, including GPT structured Responses wiring, cache, veto-shadow learning,
+  SuperLearner/collective memory, Spartan gate and DEMO-only safety checks.
+- Scalp health utility: PASSED against the supplied database.
+
+INSTALL - RECOMMENDED (CODE UPDATE ZIP)
+---------------------------------------
+1. Stop all five bot windows with 09_STOP_ALL_WINDOWS.bat.
+2. Make a backup with 15_BACKUP_LEARNING.bat (recommended).
+3. Extract the V6.6 CODE UPDATE ZIP directly into your existing TM_V6_SCALP_INTELLIGENCE_DEMO folder.
+4. Choose Replace files when Windows asks.
+5. DO NOT delete your existing .env or trading_machine.db.
+6. Run 10_OFFLINE_SELF_TEST.bat.
+7. Run 18_TEST_GPT_CONNECTION.bat.
+8. Run 22_SCALP_HEALTH.bat once.
+9. Start with 00_RUN_ME_DEMO.bat.
+
+FULL ZIP
+--------
+The full V6.6 ZIP contains the supplied database/data/reports but intentionally excludes .env and secret API keys.
+If using the full ZIP as a new folder, copy only your own existing .env into its TM_V6_SCALP_INTELLIGENCE_DEMO folder,
+or run 17_CONFIGURE_GPT.bat to configure the key again.
+
+IMPORTANT
+---------
+This update aims to reduce accidental signal starvation without forcing trades. It cannot guarantee profit or capital growth.
+Keep it on DEMO until a meaningful forward sample shows positive expectancy, acceptable drawdown and stable execution.

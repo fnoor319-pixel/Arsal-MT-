@@ -1,0 +1,22 @@
+V10.0 ARCHITECTURE
+
+FAST PATH
+MT5 ticks/M1 bars
+ -> Existing Micro Hunter
+ -> if no Micro Hunter setup: V10 8-expert radar
+ -> expert consensus/conflict + regime preference
+ -> persistent native DEMO carrier
+ -> V9 execution-first Quant ensemble
+ -> optional Luna meta-review for high-score candidates
+ -> risk/sizing/cost/fresh-price/news hard locks
+ -> broker order
+ -> V9.2 adaptive exit manager
+
+SLOW/BACKGROUND PATH
+strategy generator + historical/OOS + shadow + SuperLearner + contextual broker memory
++ rejected-trade counterfactuals + champion/challenger + Luna value-add audit
+
+KEY CHANGE
+Research intelligence informs the fast trader but does not have to serially authorize
+every scalp. The live decision remains local and fast; actual broker outcomes decide
+which specialists earn future score/risk preference.

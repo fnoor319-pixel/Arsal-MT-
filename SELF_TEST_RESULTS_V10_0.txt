@@ -1,0 +1,14 @@
+V10.0 FOCUSED VERIFICATION
+
+PASS: Python syntax compile for v10_superhuman_scalper.py, trading_machine.py,
+      settings.py, offline_self_test.py and v10_superhuman_status.py.
+PASS: Deterministic synthetic breakout produced a V10 momentum_breakout BUY candidate.
+PASS: V10 has eight expert archetypes and a regime-aware consensus router.
+PASS: V10 synthetic candidates use existing native DEMO strategy carriers and the
+      existing V9/V9.2 risk/execution/learning stack.
+PASS: 100 trades/symbol/day remains a safety ceiling.
+PASS: V9.2.1 symbol-local 5-loss freeze and portfolio hard loss/DD stops preserved.
+PASS: Martingale/loss-doubling remains disabled.
+
+IMPORTANT: Run 10_OFFLINE_SELF_TEST.bat inside the complete installed machine before
+starting DEMO execution. This patch workspace does not contain every legacy dependency.

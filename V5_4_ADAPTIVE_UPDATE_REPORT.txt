@@ -1,0 +1,85 @@
+TRADING MACHINE V5.4 ADAPTIVE LEARNING UPDATE REPORT
+Generated: 2026-08-11
+
+SOURCE PACKAGE
+- Uploaded source ZIP: Trading_Machine_FINAL_MERGED_V5_3_DEMO_SAFE.zip
+- Source ZIP SHA-256: a4823ad3e67541298eaa14b54920b172c4c8f254e4b8767c18d4f3ea44a97aa8
+
+DATA PRESERVATION IN THE FULL V5.4 PACKAGE
+The database and all three M1 CSV files were copied unchanged from the uploaded
+V5.3 ZIP. V5.4 code performs an in-place, additive schema migration at first
+startup. It does not delete or reset existing strategy/backtest/demo/reward rows.
+
+Unchanged packaged data SHA-256:
+- trading_machine.db: ed6c2151b3d437d9d4311d35cec699b1e887348b1f1b21093b44a6fdeca8ed0e
+- XAUUSDm bars_M1.csv: 9f220080402ebc6eac072280e5c6ae810619167af744fb610505ef33c322b8c7
+- USOILm bars_M1.csv: 188c69d36162dfcc83e192d4c02907b3e143c0cacea9804326fe6db837e9f16e
+- BTCUSDm bars_M1.csv: bf33e1fcb2993ad3968151dc1825b642b24d8fb73d7618b36014b4e64a48742b
+
+V5.4 ADDITIONS
+1. Persistent direction/regime-specific adaptive_trade_memory.
+2. Existing closed demo_positions are bootstrapped into adaptive memory once.
+3. Per-setup loss cooldown: 3 minutes after first live loss, then exponential
+   cooldown up to the configured 2-hour maximum.
+4. Duplicate identical setup block while that setup already has an open DEMO
+   position.
+5. Repeated-loss recovery confirmation: after two recent consecutive losses the
+   signal needs stronger ensemble votes/dominance before re-entry.
+6. Confidence score using smoothed win rate + average R + recency-weighted EWMA
+   reward + consecutive-loss penalty.
+7. Memory recency decay back toward neutral and loss-streak session reset so a
+   setup is not permanently banned.
+8. Adaptive candidate-ranking adjustment, so recent live performance affects
+   which approved/trial strategy is selected.
+9. Entry-context memory (ATR, RSI, EMA relationship, volatility, spread/ATR,
+   DOM, votes/weights and execution tier) stored with new DEMO positions.
+10. adaptive_learning_events audit table for every newly closed DEMO trade.
+11. Adaptive risk multiplier. Base risks remain unchanged. Upsizing requires at
+   least 8 positive live observations and confidence >= 0.62. Approved target
+   risk may scale to at most 0.45% equity (existing 0.50% hard ceiling remains);
+   trial target risk may scale to at most 0.10% (existing 0.35% ceiling remains).
+   Broker minimum/step/maximum and stop-distance sizing still decide final lot.
+12. Screen 4 library output now shows adaptive observations/confidence/loss
+   streak. Screen 5 logs learning blocks, confidence and risk multiplier.
+13. 11_STATUS_REPORT now includes adaptive learning totals.
+14. Five visible windows, supervisor/startup structure, DEMO hard lock, existing
+   strategy generator, backtester, shadow validator and execution tiers retained.
+
+MIGRATION PRESERVATION TEST ON A COPY OF THE UPLOADED DATABASE
+Before migration:
+- strategies: 2442
+- backtests: 2148
+- strategy_diagnostics: 2148
+- strategy_scores: 232
+- demo_positions: 39
+- rl_reward_events: 472
+- candidate_live_scores: 118
+- integrity_check: ok
+
+After V5.4 migration on a temporary copy:
+- all above row counts remained exactly unchanged
+- integrity_check: ok
+- adaptive_trade_memory setups: 17
+- adaptive observations bootstrapped: 39 (one for each existing closed DEMO row)
+- bootstrap result: 18 wins / 21 losses
+- additive demo_positions columns created: execution_tier, setup_key, context_json,
+  learning_confidence, risk_multiplier
+
+VERIFICATION
+- Python syntax compilation passed for all .py files.
+- Offline self-test passed.
+- Adaptive tests passed: loss -> cooldown, persistent memory, confidence recovery,
+  positive evidence -> risk multiplier > 1x, and broker-valid volume > 0.01 when
+  equity/stop-risk support it.
+- Existing five engine CLI commands and Windows supervisor regression tests passed.
+
+IMPORTANT UPGRADE NOTE
+The full V5.4 ZIP can only preserve data that was present in the uploaded V5.3
+ZIP. If your currently extracted/running TM_FINAL_DEMO folder has newer database
+learning/trades than the uploaded ZIP, back it up first and do not overwrite its
+trading_machine.db or data folder. Use the supplied CODE-ONLY update ZIP over the
+current folder, or restore the newer DB/data after extracting the full build.
+
+No trading system can guarantee profit. V5.4 is designed to react to recent live
+outcomes and reduce obvious repeated losses while retaining the existing DEMO
+risk and validation protections.

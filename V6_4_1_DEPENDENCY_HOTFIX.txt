@@ -1,0 +1,13 @@
+V6.4.1 DEPENDENCY HOTFIX
+
+Problem fixed:
+- Existing TMFINAL virtual environment could exist while pydantic/openai/python-dotenv/etc. were missing.
+- V6.4 launcher only checked whether python.exe existed, so GPT connection test could fail with ModuleNotFoundError.
+
+Fix:
+- Added ensure_dependencies.py.
+- 00_RUN_ME_DEMO.bat now verifies imports and automatically runs pip install -r requirements.txt only when repair is needed.
+- 00_START_ALL_24_7_DEMO.bat has the same protection if launched directly.
+- 01_INSTALL.bat supports --no-pause when called from one-click launcher.
+
+No trading strategy/database changes were made by this hotfix.

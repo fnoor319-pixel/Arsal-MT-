@@ -1,0 +1,68 @@
+V6.8 CAPITAL GROWTH + LUNA SCALP LAB — UPGRADE REPORT
+=====================================================
+
+BASE MERGED
+-----------
+The user's V6.6 SCALP AI OPPORTUNITY HOTFIX was compared with the stronger V6.6/V6.7 worktree.
+The useful opportunity-flow ideas were retained while preserving:
+- expected-R calibrated SuperLearner,
+- rejected-shadow contamination protection,
+- optional DOM/news neutrality,
+- closed-M1 duplicate suppression,
+- compact Luna final review + decision memory,
+- narrow soft-borderline Luna second opinion,
+- execution-quality/slippage learning,
+- cost-stress research,
+- champion/challenger and parameter-stability lab,
+- Monte Carlo risk simulation,
+- opportunity score + portfolio correlation risk,
+- Luna value-add audit,
+- real-tick audit for recent DEMO trades,
+- five-engine self-healing supervisor.
+
+NEW IN V6.8
+-----------
+1. CAPITAL GROWTH CONTROLLER
+   Persists a daily equity anchor/peak in SQLite using the configured session timezone.
+   Tracks 15% target and 20% stretch objective.
+
+2. PROFIT-PROTECTION PHASES
+   build            : normal evidence-based risk logic.
+   target_protect   : >=15% daily growth -> 0.50x risk multiplier.
+   stretch_lock     : >=20% daily growth -> new entries paused until next local day.
+   giveback_protect : after >=8% peak gain, >3 percentage-point giveback -> 0.35x risk.
+
+3. NO TARGET CHASING
+   There is deliberately no martingale, loss-recovery multiplier, forced trade frequency,
+   risk increase because target is behind, or Luna override of deterministic risk gates.
+   Compounding comes from current-equity sizing plus positive expectancy, not risk chasing.
+
+4. LUNA GETS CAPITAL CONTEXT
+   The compact pre-trade packet now includes daily growth/peak/target/stretch/phase so Luna
+   understands portfolio context, while the system prompt explicitly forbids confirming a
+   trade merely to chase the target.
+
+5. CAPITAL STATUS TOOL
+   27_CAPITAL_GROWTH_STATUS.bat gives one-screen daily growth/target/protection status.
+
+API COST CONTROL
+----------------
+- gpt-5.6-luna
+- $0.20/M input + $1.20/M output constants
+- $4 bot-local estimated spend guard from a $5 funded key
+- 80 pre-trade + 8 post-trade paid-call caps/day
+- compact packet, <=80 pre-trade output tokens, <=80-character reason
+- reasoning=none and material-state fingerprint cache
+
+VALIDATION
+----------
+- Python compileall: PASS
+- Full offline regression/self-test: PASS
+- Capital-growth regression: PASS for build -> target_protect -> stretch_lock
+- GPT remains after SuperLearner and before deterministic sizing
+- Hard DEMO-only account lock remains intact
+
+NO DATABASE/SECRET REPLACEMENT
+------------------------------
+This package is code-only. It does not include .env, API key, trading_machine.db, historical
+data, reports or learning backups. Existing learning state is preserved when installed as directed.

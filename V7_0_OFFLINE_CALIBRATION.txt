@@ -1,0 +1,22 @@
+V7.0 MICRO-HUNTER OFFLINE SCORE CALIBRATION
+
+This is candidate-score frequency on cached M1 bars, NOT a profit forecast and NOT expected broker trade count.
+Session, spread, Spartan, learning, SuperLearner, Edge Recovery, Luna and risk gates are not simulated here.
+
+XAUUSDm: sample_bars=2279
+  immediate_trigger_bars=25 (~15.8/24h before downstream gates)
+  arm_only_bars=31 (~19.6/24h)
+  watch_only_bars=50
+  trigger playbooks: impulse_pullback_resume=13, momentum_burst=9, exhaustion_snapback=4
+
+USOILm: sample_bars=2279
+  immediate_trigger_bars=11 (~7.0/24h before downstream gates)
+  arm_only_bars=23 (~14.5/24h)
+  watch_only_bars=47
+  trigger playbooks: impulse_pullback_resume=6, momentum_burst=6, exhaustion_snapback=1
+
+BTCUSDm: sample_bars=2279
+  immediate_trigger_bars=26 (~16.4/24h before downstream gates)
+  arm_only_bars=26 (~16.4/24h)
+  watch_only_bars=59
+  trigger playbooks: momentum_burst=11, impulse_pullback_resume=8, exhaustion_snapback=4, wick_rejection=3, squeeze_breakout=1

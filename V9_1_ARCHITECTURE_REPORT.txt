@@ -1,0 +1,28 @@
+V9.1 ARCHITECTURE
+
+LIVE PATH
+Micro Hunter trigger
+ -> cost/spread/freshness hard locks
+ -> Spartan context (advisory except authoritative locks)
+ -> SuperLearner probability + Expected-R
+ -> broker-outcome precision memory
+ -> ensemble score (B/A/A+ only)
+ -> Luna advisory for selected top setups
+ -> dynamic risk (never martingale)
+ -> MT5 order_check/order_send
+ -> trailing / break-even manager
+ -> closed R + MFE + MAE
+ -> adaptive strategy/regime memory + micro playbook memory
+ -> next trade score/risk/exit policy
+
+LEARNING HIERARCHY
+A) strategy + symbol + regime + side adaptive memory
+B) symbol + micro playbook + side memory
+C) session/family and SuperLearner evidence already present in V9
+D) execution quality / slippage memory already present in V9
+E) Luna decision memory already present in V9
+
+V9.1 does not attempt to manufacture an 80% win rate by shrinking TP until almost
+every trade is green. The objective remains positive expectancy and capital growth.
+The win-rate target is monitored together with mean R and profit factor, because a
+high win rate with rare very large losses can still lose money.

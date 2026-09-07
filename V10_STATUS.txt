@@ -1,0 +1,89 @@
+======================================================================================================
+V10.1 PARALLEL SUPERHUMAN SCALP ROUTER STATUS - DEMO ONLY
+======================================================================================================
+enabled=True | expert trigger>=72.0 | capacity/symbol/day=100
+Fast brain: Micro Hunter + 8 local expert archetypes run IN PARALLEL on each new closed M1 bar; Luna stays selective.
+Archetypes: trend_pullback, momentum_breakout, squeeze_release, liquidity_sweep_reclaim, failed_breakout_reversal, vwap_mean_reversion, range_edge_rotation, exhaustion_snapback
+
+V10 EXPERT RADAR - LAST 6H
+trend_pullback               BUY  seen=13 triggered=13 avg=93.0 max=100.0
+liquidity_sweep_reclaim      BUY  seen=5 triggered=5 avg=77.3 max=80.8
+momentum_breakout            BUY  seen=5 triggered=3 avg=75.6 max=88.8
+liquidity_sweep_reclaim      SELL seen=3 triggered=3 avg=85.0 max=90.4
+squeeze_release              SELL seen=2 triggered=2 avg=89.5 max=92.0
+range_edge_rotation          SELL seen=1 triggered=1 avg=77.1 max=77.1
+exhaustion_snapback          SELL seen=1 triggered=1 avg=79.4 max=79.4
+failed_breakout_reversal     BUY  seen=4 triggered=0 avg=66.7 max=71.7
+failed_breakout_reversal     SELL seen=4 triggered=0 avg=67.9 max=71.2
+
+LATEST V10 EXPERT TRIGGERS
+2026-09-02T14:37:42.080143+00:00 | BTCUSDm trend_pullback BUY score=83.6 regime=volatile_range
+2026-09-02T14:36:40.355718+00:00 | BTCUSDm trend_pullback BUY score=82.2 regime=volatile_range
+2026-09-02T14:36:40.170011+00:00 | XAUUSDm liquidity_sweep_reclaim BUY score=80.8 regime=trend runner=failed_breakout_reversal:70.0
+2026-09-02T14:35:40.577967+00:00 | XAUUSDm liquidity_sweep_reclaim BUY score=75.2 regime=trend
+2026-09-02T14:34:41.236365+00:00 | XAUUSDm liquidity_sweep_reclaim BUY score=72.7 regime=trend
+2026-09-02T14:30:39.463133+00:00 | USOILm liquidity_sweep_reclaim SELL score=90.4 regime=expansion_trend
+2026-09-02T14:29:41.491377+00:00 | BTCUSDm liquidity_sweep_reclaim BUY score=78.1 regime=trend
+2026-09-02T14:27:40.668298+00:00 | BTCUSDm liquidity_sweep_reclaim BUY score=79.7 regime=expansion_trend
+2026-09-02T14:27:40.473093+00:00 | USOILm exhaustion_snapback SELL score=79.4 regime=expansion_trend runner=liquidity_sweep_reclaim:76.1
+2026-09-02T14:26:40.943386+00:00 | BTCUSDm squeeze_release SELL score=92.0 regime=expansion_trend runner=momentum_breakout:83.9
+2026-09-02T14:26:40.763580+00:00 | USOILm momentum_breakout BUY score=88.8 regime=expansion_trend
+2026-09-02T14:26:40.658472+00:00 | XAUUSDm squeeze_release SELL score=87.1 regime=expansion_trend runner=momentum_breakout:73.5
+
+V10.1 PARALLEL ROUTER - LATEST
+2026-09-02T14:37:42.080287+00:00 | BTCUSDm | hunter=None:None | expert=trend_pullback:83.64936883466027 | CHOSEN=v10 trend_pullback:83.64936883466027 | v10_only
+2026-09-02T14:37:39.464246+00:00 | USOILm | hunter=impulse_pullback_resume:80.46 | expert=None:None | CHOSEN=hunter impulse_pullback_resume:80.46 | hunter_only
+2026-09-02T14:37:39.332207+00:00 | XAUUSDm | hunter=None:None | expert=None:None | CHOSEN=none None:None | no_setup
+2026-09-02T14:36:40.355873+00:00 | BTCUSDm | hunter=None:None | expert=trend_pullback:82.18235823654791 | CHOSEN=v10 trend_pullback:82.18235823654791 | v10_only
+2026-09-02T14:36:40.270240+00:00 | USOILm | hunter=None:None | expert=None:None | CHOSEN=none None:None | no_setup
+2026-09-02T14:36:40.170206+00:00 | XAUUSDm | hunter=wick_rejection:74.83 | expert=liquidity_sweep_reclaim:80.78187093195879 | CHOSEN=v10 liquidity_sweep_reclaim:80.78187093195879 | same_side_v10_stronger
+2026-09-02T14:35:40.874677+00:00 | BTCUSDm | hunter=None:None | expert=None:None | CHOSEN=none None:None | no_setup
+2026-09-02T14:35:40.764780+00:00 | USOILm | hunter=momentum_burst:78.4 | expert=None:None | CHOSEN=hunter momentum_burst:78.4 | hunter_only
+2026-09-02T14:35:40.578141+00:00 | XAUUSDm | hunter=None:None | expert=liquidity_sweep_reclaim:75.16186976536656 | CHOSEN=v10 liquidity_sweep_reclaim:75.16186976536656 | v10_only
+2026-09-02T14:34:41.426495+00:00 | BTCUSDm | hunter=None:None | expert=None:None | CHOSEN=none None:None | no_setup
+2026-09-02T14:34:41.338727+00:00 | USOILm | hunter=None:None | expert=None:None | CHOSEN=none None:None | no_setup
+2026-09-02T14:34:41.236578+00:00 | XAUUSDm | hunter=None:None | expert=liquidity_sweep_reclaim:72.70731919580493 | CHOSEN=v10 liquidity_sweep_reclaim:72.70731919580493 | v10_only
+2026-09-02T14:33:42.297906+00:00 | BTCUSDm | hunter=None:None | expert=None:None | CHOSEN=none None:None | no_setup
+2026-09-02T14:33:42.119110+00:00 | XAUUSDm | hunter=None:None | expert=None:None | CHOSEN=none None:None | no_setup
+2026-09-02T14:33:39.803180+00:00 | USOILm | hunter=None:None | expert=None:None | CHOSEN=none None:None | no_setup
+
+LATEST EXECUTION-FIRST DECISIONS
+2026-09-02T14:37:39.825173+00:00 | USOILm impulse_pullback_resume HOLD C score=57.39 risk_x=0.2 Luna=not_requested(0.0) | ensemble 57.4 below execute floor 64.0
+2026-09-02T14:31:41.122510+00:00 | XAUUSDm impulse_pullback_resume HOLD C score=46.2 risk_x=0.2 Luna=not_requested(0.0) | precision Quant hold (ER=-0.01R edge=-0.00)
+2026-09-02T14:29:41.848507+00:00 | BTCUSDm wick_rejection HOLD C score=54.86 risk_x=0.2 Luna=not_requested(0.0) | precision Quant hold (ER=+0.09R edge=+0.03)
+2026-09-02T14:27:41.029814+00:00 | BTCUSDm wick_rejection HOLD C score=56.62 risk_x=0.2 Luna=not_requested(0.0) | precision Quant hold (ER=+0.09R edge=+0.03)
+2026-09-02T14:26:43.575230+00:00 | USOILm momentum_burst HOLD C score=50.55 risk_x=0.2 Luna=not_requested(0.0) | precision Quant hold (ER=-0.02R edge=-0.01)
+2026-09-02T14:21:33.607967+00:00 | USOILm impulse_pullback_resume HOLD C score=56.37 risk_x=0.2 Luna=not_requested(0.0) | precision Quant hold (ER=+0.05R edge=+0.02)
+2026-09-02T14:18:40.871589+00:00 | USOILm squeeze_breakout HOLD C score=48.88 risk_x=0.2 Luna=not_requested(0.0) | precision Quant hold (ER=+0.00R edge=+0.00)
+2026-09-02T14:17:42.670031+00:00 | XAUUSDm exhaustion_snapback HOLD C score=39.78 risk_x=0.2 Luna=not_requested(0.0) | precision Quant hold (ER=-0.15R edge=-0.06)
+2026-09-02T14:17:40.386525+00:00 | BTCUSDm momentum_burst GO B score=63.86 risk_x=0.25 Luna=not_requested(0.0) | execution-first B ensemble
+2026-09-02T14:16:40.745522+00:00 | XAUUSDm momentum_burst HOLD C score=50.97 risk_x=0.2064 Luna=not_requested(0.0) | ensemble 51.0 below execute floor 61.0
+2026-09-02T14:15:41.005714+00:00 | XAUUSDm momentum_burst HOLD C score=51.85 risk_x=0.2064 Luna=not_requested(0.0) | ensemble 51.9 below execute floor 61.0
+2026-09-02T14:14:42.347156+00:00 | XAUUSDm wick_rejection GO B score=65.74 risk_x=0.25 Luna=not_requested(0.0) | execution-first B ensemble
+
+BROKER-DEMO OUTCOMES - LAST 6H
+id=430 BTCUSDm momentum_burst hunter R=+0.250 pnl=0.13
+id=429 XAUUSDm wick_rejection hunter R=-0.098 pnl=-0.21
+id=428 XAUUSDm impulse_pullback_resume hunter R=+1.041 pnl=2.54
+id=427 BTCUSDm impulse_pullback_resume hunter R=-1.188 pnl=-0.76
+id=426 BTCUSDm impulse_pullback_resume hunter R=-1.047 pnl=-0.45
+id=425 XAUUSDm momentum_burst hunter R=-1.031 pnl=-1.65
+id=424 XAUUSDm impulse_pullback_resume hunter R=-0.994 pnl=-1.7
+id=423 BTCUSDm momentum_burst hunter R=-0.361 pnl=-0.13
+id=422 BTCUSDm impulse_pullback_resume hunter R=-1.031 pnl=-0.33
+id=421 XAUUSDm momentum_burst hunter R=-1.055 pnl=-1.35
+id=420 XAUUSDm impulse_pullback_resume hunter R=-0.662 pnl=-0.94
+id=419 USOILm impulse_pullback_resume hunter R=-1.356 pnl=-0.8
+id=418 XAUUSDm momentum_burst hunter R=-0.908 pnl=-1.19
+id=417 BTCUSDm impulse_pullback_resume hunter R=-0.031 pnl=-0.01
+id=416 USOILm impulse_pullback_resume hunter R=-1.133 pnl=-0.68
+id=415 XAUUSDm momentum_burst hunter R=+0.734 pnl=0.94
+id=414 USOILm impulse_pullback_resume hunter R=-0.898 pnl=-0.53
+id=413 XAUUSDm wick_rejection hunter R=+0.444 pnl=0.56
+id=412 BTCUSDm impulse_pullback_resume hunter R=-1.256 pnl=-0.49
+id=411 XAUUSDm exhaustion_snapback hunter R=-1.093 pnl=-1.76
+SUMMARY closed=20 wins=4 win%=20.0 sumR=-11.673 avgR=-0.584 v10_entries=0
+
+INTERPRETATION
+V10.1 runs experts in parallel with the legacy hunter. Judge each archetype by real DEMO expectancy, PF and drawdown.
+Do not increase base risk until V10 has enough closed broker evidence.

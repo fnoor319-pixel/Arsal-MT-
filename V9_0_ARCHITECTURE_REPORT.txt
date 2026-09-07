@@ -1,0 +1,22 @@
+V9.0 ARCHITECTURE REPORT
+
+OLD SERIAL-VETO DESIGN
+Hunter -> Spread -> Spartan -> Adaptive -> SuperLearner -> Edge -> Local shortlist -> Luna -> Risk -> Broker
+Any one soft/research disagreement could permanently delete the setup.
+
+V9 EXECUTION-FIRST DESIGN
+Hunter -> HARD COST/RISK LOCKS -> ENSEMBLE EVIDENCE -> RISK GRADE -> BROKER
+                                  | Spartan advisory
+                                  | SuperLearner advisory
+                                  | Adaptive memory advisory
+                                  | Edge memory advisory
+                                  | Luna advisory (top setups only)
+
+WHY THIS SHOULD PRODUCE BROKER EVIDENCE
+The 18-hour audit already showed hundreds of real Micro Hunter triggers. V9 no longer requires all model layers to agree before an MT5 DEMO order may exist. A valid trigger with a usable ensemble score can reach broker sizing/order_check, while disagreement expresses itself mainly through smaller risk.
+
+WHY THIS IS NOT 'FORCE A TRADE'
+A trigger still has to exist. Cost/risk/news/severe-negative-expectancy/fresh-price/sizing/MT5 locks remain. V9 simply stops treating every research/reviewer model as an independent kill switch.
+
+LEARNING LOOP
+Every closed V9 broker-DEMO position flows through the existing reconciliation path, which records final R/PnL plus MFE/MAE and updates adaptive, collective/session, online SuperLearner and Micro Hunter playbook memory. The machine can therefore learn from actual broker execution rather than primarily from historical/shadow counterfactuals.

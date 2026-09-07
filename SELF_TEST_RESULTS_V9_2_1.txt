@@ -1,0 +1,9 @@
+V9.2.1 FOCUSED VERIFICATION
+
+PASS - Python syntax compile for trading_machine.py/settings.py/status script.
+PASS - Portfolio loss streak no longer returns a hard freeze from risk_guard.
+PASS - Per-symbol streak SQL is scoped to symbol + persistent V9.2.1 epoch + v9 execution tier.
+PASS - Exact break-even does not increment loss streak; negative R does; positive R resets streak.
+PASS - Five same-symbol consecutive losses can freeze only that symbol for configured 15 minutes.
+PASS - Daily-loss and peak-drawdown account hard stops remain.
+PASS - Historical demo_positions are not deleted and remain available to learning.

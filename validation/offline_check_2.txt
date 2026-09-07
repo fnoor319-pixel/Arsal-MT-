@@ -1,0 +1,115 @@
+-m unittest discover -s tests -p test_v11*.py -v
+Database ready: /tmp/v11_offline_3phi62rj/test.db
+V11 DEMO TEST trend_pullback sent | demo_probe | netER=+0.000R | actual risk=0.020% | broker=0ms
+Database ready: /tmp/v11_offline_uaz0qohp/test.db
+V11 DEMO TEST trend_pullback sent | demo_probe | netER=+0.000R | actual risk=0.020% | broker=0ms
+Database ready: /tmp/v11_offline_ybt7pqyn/test.db
+Database ready: /tmp/v11_offline_rkh3bxem/test.db
+V11 DEMO TEST trend_pullback sent | demo_probe | netER=+0.000R | actual risk=0.020% | broker=0ms
+DEMO CLOSED TEST | strategy=1 | pnl=-0.26 | reward=-0.13R | learn_conf=0.36 loss_streak=1
+Database ready: /tmp/v11_offline_him22fpw/test.db
+V11 observer active | virtual=0 | loop p95=1ms | poll target=0.5s | DEMO only
+Database ready: /tmp/v11_offline_x3m6vppn/test.db
+V11 DEMO TEST trend_pullback sent | demo_probe | netER=+0.000R | actual risk=0.020% | broker=0ms
+Database ready: /tmp/v11_offline_gc34ul3m/test.db
+Database ready: /tmp/v11_offline_86jhf8uk/test.db
+V11 DEMO TEST trend_pullback sent | demo_probe | netER=+0.000R | actual risk=0.020% | broker=0ms
+Database ready: /tmp/v11_offline_nl270dwv/test.db
+Database ready: /tmp/v11_offline_r1yqn3_k/test.db
+Database ready: /tmp/v11_offline_bendhr4y/test.db
+Database ready: /tmp/v11_offline_205l40et/test.db
+Database ready: /tmp/v11_offline_4z50el47/test.db
+V11 DEMO TEST trend_pullback sent | demo_probe | netER=+0.000R | actual risk=0.020% | broker=0ms
+Database ready: /tmp/v11_offline_dr51wdce/test.db
+Database ready: /tmp/v11_offline_s24wcl7b/test.db
+Database ready: /tmp/v11_offline_37z4jsz3/test.db
+Database ready: /tmp/v11_offline_xs9p2vxx/test.db
+V11 DEMO TEST trend_pullback unknown | demo_probe | netER=+0.000R | actual risk=0.020% | broker=0ms
+Database ready: /tmp/v11_offline_6k_6njhl/test.db
+V11 observer active | virtual=0 | loop p95=1ms | poll target=0.5s | DEMO only
+Database ready: /tmp/v11_offline_vm695pk0/test.db
+V11 observer active | virtual=0 | loop p95=1ms | poll target=0.5s | DEMO only
+Database ready: /tmp/v11_offline_8x_dp0vp/test.db
+Database ready: /tmp/v11_offline_r16adp0b/test.db
+Database ready: /tmp/v11_offline_zu_kucct/test.db
+Database ready: /tmp/v11_offline_km0zgwsr/test.db
+V11 DEMO TEST trend_pullback sent | demo_probe | netER=+0.000R | actual risk=0.020% | broker=0ms
+Database ready: /tmp/v11_offline_v1rrjb7g/test.db
+Database ready: /tmp/v11_offline_ih95qhhn/test.db
+V11 DEMO TEST trend_pullback sent | demo_probe | netER=+0.000R | actual risk=0.020% | broker=0ms
+Database ready: /tmp/v11_offline_p44m2n4c/test.db
+V11 DEMO TEST trend_pullback sent | demo_probe | netER=+0.000R | actual risk=0.020% | broker=0ms
+Database ready: /tmp/v11_offline_ssei1lje/test.db
+V11 DEMO TEST trend_pullback unknown | demo_probe | netER=+0.000R | actual risk=0.020% | broker=0ms
+test_exception_after_send_is_unknown (test_v11.AcknowledgementTests.test_exception_after_send_is_unknown) ... ok
+test_failed_check_never_sends (test_v11.AcknowledgementTests.test_failed_check_never_sends) ... ok
+test_no_ack_means_one_send_only (test_v11.AcknowledgementTests.test_no_ack_means_one_send_only) ... ok
+test_only_invalid_fill_is_retried (test_v11.AcknowledgementTests.test_only_invalid_fill_is_retried) ... ok
+test_rejection_is_not_blindly_retried (test_v11.AcknowledgementTests.test_rejection_is_not_blindly_retried) ... ok
+test_stale_future_and_invalid_quotes (test_v11.AcknowledgementTests.test_stale_future_and_invalid_quotes) ... ok
+test_timeout_means_one_send_only (test_v11.AcknowledgementTests.test_timeout_means_one_send_only) ... ok
+test_bad_holdout_cannot_promote (test_v11.EvidenceTests.test_bad_holdout_cannot_promote) ... ok
+test_gap_never_generates_training_labels (test_v11.EvidenceTests.test_gap_never_generates_training_labels) ... ok
+test_less_bad_but_negative_cannot_promote (test_v11.EvidenceTests.test_less_bad_but_negative_cannot_promote) ... ok
+test_no_overlapping_clones (test_v11.EvidenceTests.test_no_overlapping_clones) ... ok
+test_paired_prospective_open_idempotent (test_v11.EvidenceTests.test_paired_prospective_open_idempotent) ... ok
+test_positive_paired_later_holdout_can_promote_once (test_v11.EvidenceTests.test_positive_paired_later_holdout_can_promote_once) ... ok
+test_probe_cap_counts_unknown_and_not_rejected (test_v11.EvidenceTests.test_probe_cap_counts_unknown_and_not_rejected) ... ok
+test_result_idempotent (test_v11.EvidenceTests.test_result_idempotent) ... ok
+test_same_policy_cost_increase_only (test_v11.EvidenceTests.test_same_policy_cost_increase_only) ... ok
+test_small_sample_cannot_promote (test_v11.EvidenceTests.test_small_sample_cannot_promote) ... ok
+test_true_tick_order_changes_outcome (test_v11.EvidenceTests.test_true_tick_order_changes_outcome) ... ok
+test_adverse_quote_flow_does_not_require_dom (test_v11.PolicyTests.test_adverse_quote_flow_does_not_require_dom) ... ok
+test_amend_needs_ack (test_v11.PolicyTests.test_amend_needs_ack) ... ok
+test_bad_geometry_rejected (test_v11.PolicyTests.test_bad_geometry_rejected) ... ok
+test_broker_supersedes_matching_shadow (test_v11.PolicyTests.test_broker_supersedes_matching_shadow) ... ok
+test_buy_exits_at_bid (test_v11.PolicyTests.test_buy_exits_at_bid) ... ok
+test_fees_net_without_double_spread (test_v11.PolicyTests.test_fees_net_without_double_spread) ... ok
+test_gap_does_not_assume_perfect_stop_fill (test_v11.PolicyTests.test_gap_does_not_assume_perfect_stop_fill) ... ok
+test_inadequate_flow_is_not_fabricated (test_v11.PolicyTests.test_inadequate_flow_is_not_fabricated) ... ok
+test_legacy_and_incomplete_excluded (test_v11.PolicyTests.test_legacy_and_incomplete_excluded) ... ok
+test_nan_atr_rejected (test_v11.PolicyTests.test_nan_atr_rejected) ... ok
+test_negative_and_unknown_have_different_modes (test_v11.PolicyTests.test_negative_and_unknown_have_different_modes) ... ok
+test_no_tiny_profit_grab (test_v11.PolicyTests.test_no_tiny_profit_grab) ... ok
+test_out_of_order_and_invalid_quote (test_v11.PolicyTests.test_out_of_order_and_invalid_quote) ... ok
+test_raw_score_does_not_override_economic_router (test_v11.PolicyTests.test_raw_score_does_not_override_economic_router) ... ok
+test_replay_does_not_amend_between_real_polls (test_v11.PolicyTests.test_replay_does_not_amend_between_real_polls) ... ok
+test_roundtrip (test_v11.PolicyTests.test_roundtrip) ... ok
+test_same_timestamp_distinct_quotes_processed (test_v11.PolicyTests.test_same_timestamp_distinct_quotes_processed) ... ok
+test_sell_exits_at_ask (test_v11.PolicyTests.test_sell_exits_at_ask) ... ok
+test_shadow_only_does_not_claim_broker_validation (test_v11.PolicyTests.test_shadow_only_does_not_claim_broker_validation) ... ok
+test_stop_never_widens (test_v11.PolicyTests.test_stop_never_widens) ... ok
+test_time_exit_even_with_unchanged_quote (test_v11.PolicyTests.test_time_exit_even_with_unchanged_quote) ... ok
+test_tiny_winners_can_still_be_negative_expectancy (test_v11.PolicyTests.test_tiny_winners_can_still_be_negative_expectancy) ... ok
+test_ack_recovers_exact_position_without_second_order (test_v11.RuntimeTests.test_ack_recovers_exact_position_without_second_order) ... ok
+test_daily_capacity_includes_v11_and_legacy (test_v11.RuntimeTests.test_daily_capacity_includes_v11_and_legacy) ... ok
+test_duplicate_tick_boundary_is_not_double_counted (test_v11.RuntimeTests.test_duplicate_tick_boundary_is_not_double_counted) ... ok
+test_end_to_end_plan_fill_time_exit_net_learning (test_v11.RuntimeTests.test_end_to_end_plan_fill_time_exit_net_learning) ... ok
+test_existing_symbol_position_blocks_entry (test_v11.RuntimeTests.test_existing_symbol_position_blocks_entry) ... ok
+test_filled_before_registration_can_recover_from_deals (test_v11.RuntimeTests.test_filled_before_registration_can_recover_from_deals) ... ok
+test_full_spread_gate_on_fresh_quote (test_v11.RuntimeTests.test_full_spread_gate_on_fresh_quote) ... ok
+test_later_partial_entry_fills_update_actual_risk_basis (test_v11.RuntimeTests.test_later_partial_entry_fills_update_actual_risk_basis) ... ok
+test_malformed_tick_order_excludes_virtuals (test_v11.RuntimeTests.test_malformed_tick_order_excludes_virtuals) ... ok
+test_minimum_lot_above_probe_cap_holds (test_v11.RuntimeTests.test_minimum_lot_above_probe_cap_holds) ... ok
+test_missing_beginning_of_tick_path_excluded (test_v11.RuntimeTests.test_missing_beginning_of_tick_path_excluded) ... ok
+test_missing_order_list_blocks_entry (test_v11.RuntimeTests.test_missing_order_list_blocks_entry) ... ok
+test_missing_protective_stop_requests_close (test_v11.RuntimeTests.test_missing_protective_stop_requests_close) ... ok
+test_missing_tick_path_excluded (test_v11.RuntimeTests.test_missing_tick_path_excluded) ... ok
+test_multiple_expert_candidates_are_observed_without_broker_entry (test_v11.RuntimeTests.test_multiple_expert_candidates_are_observed_without_broker_entry) ... ok
+test_news_lock_cannot_trade (test_v11.RuntimeTests.test_news_lock_cannot_trade) ... ok
+test_no_history_is_not_proof_of_unfilled_order (test_v11.RuntimeTests.test_no_history_is_not_proof_of_unfilled_order) ... ok
+test_observation_runs_before_global_risk_block (test_v11.RuntimeTests.test_observation_runs_before_global_risk_block) ... ok
+test_observation_runs_before_symbol_freeze (test_v11.RuntimeTests.test_observation_runs_before_symbol_freeze) ... ok
+test_optional_luna_no_key_has_no_thread_or_api (test_v11.RuntimeTests.test_optional_luna_no_key_has_no_thread_or_api) ... ok
+test_pending_broker_orders_block_entry (test_v11.RuntimeTests.test_pending_broker_orders_block_entry) ... ok
+test_real_account_always_blocked_even_if_legacy_setting_off (test_v11.RuntimeTests.test_real_account_always_blocked_even_if_legacy_setting_off) ... ok
+test_sixth_loss_restarts_existing_five_loss_freeze (test_v11.RuntimeTests.test_sixth_loss_restarts_existing_five_loss_freeze) ... ok
+test_stale_quote_cannot_trade (test_v11.RuntimeTests.test_stale_quote_cannot_trade) ... ok
+test_status_counts_more_than_twenty_closes (test_v11.RuntimeTests.test_status_counts_more_than_twenty_closes) ... ok
+test_unknown_close_is_not_retried (test_v11.RuntimeTests.test_unknown_close_is_not_retried) ... ok
+test_unknown_order_persists_and_blocks_duplicate_after_restart (test_v11.RuntimeTests.test_unknown_order_persists_and_blocks_duplicate_after_restart) ... ok
+
+----------------------------------------------------------------------
+Ran 67 tests in 0.706s
+
+OK

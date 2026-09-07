@@ -1,0 +1,35 @@
+TRADING MACHINE FINAL MERGE REPORT
+Generated: 2026-08-06
+
+INPUT ARCHIVES
+- Trading_Machine_Parallel_Learning_V5_1_DEMO_SAFE.zip: SHA-256 60d5725d56e1c337012edd4776f2f54ee15a28c55cc90bb3497a96d46cf5c02a
+- Trading_Machine_V5_2_5_READY_HANDSHAKE_FIX_DEMO_SAFE (1).zip: SHA-256 d1099d28ce538aaf4a848ebd5e13cc025e2a5b107f0489cdf57c118b2a5fb702
+
+MERGE RESULT
+- Runtime/startup base: V5.2.5 five-window READY/native-console build
+- Database and M1 cache source: uploaded V5.1 archive
+- The uploaded V5.1 and V5.2.5 database files were byte-identical.
+- The three uploaded M1 CSV files were also byte-identical.
+- Final database SHA-256: ed6c2151b3d437d9d4311d35cec699b1e887348b1f1b21093b44a6fdeca8ed0e
+- SQLite integrity_check: ok
+- Strategy counts: backtest_rejected=1793, generated=294, needs_revalidation=355
+- Legacy V5.1 validated rows queued for revalidation: 355
+- Eligible tiny-risk DEMO trial candidates in snapshot: XAUUSDm=136, USOILm=82, BTCUSDm=95
+
+DATA SHA-256
+- XAUUSDm: 9f220080402ebc6eac072280e5c6ae810619167af744fb610505ef33c322b8c7
+- USOILm: 188c69d36162dfcc83e192d4c02907b3e143c0cacea9804326fe6db837e9f16e
+- BTCUSDm: bf33e1fcb2993ad3968151dc1825b642b24d8fb73d7618b36014b4e64a48742b
+
+CODE MERGE FEATURES
+- Five visible engines and hidden restart supervisor retained.
+- Generator queue cap added to prevent untested-strategy flooding.
+- Fully shadow-approved ensemble remains first execution priority.
+- Strong legacy/current historical passers may take tiny-risk DEMO trial trades while strict revalidation continues.
+- Generated/rejected strategies remain non-executable.
+- Real and contest accounts remain hard-blocked.
+- One-click SQLite-safe learning backup was added to prevent future folder-deletion loss.
+
+VERIFICATION
+- Python syntax compilation passed for every .py file.
+- Offline self-test passed, including SQLite cleanup, walk-forward gate, trial-tier isolation and five-window startup regressions.

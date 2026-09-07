@@ -1,0 +1,139 @@
+SPARTAN-SCALPER-PRO V6.1 - INTEGRATION REPORT
+==============================================
+Date: 2026-08-27
+Mode: DEMO SAFE / additive upgrade
+
+WHAT WAS PRESERVED
+------------------
+- Existing trading_machine.db is unchanged byte-for-byte.
+- Existing five-engine supervisor/windows remain the runtime structure.
+- Strategy generator, historical/OOS/walk-forward backtester, live shadow lab,
+  approved library, adaptive learning, SuperLearner, position sizing and MT5
+  DEMO executor remain in place.
+- Existing DEMO-only account hard lock remains authoritative.
+- BTCUSDm keeps its existing behavior and is not subjected to Gold/Oil sessions.
+
+WHAT WAS ADDED
+--------------
+1. Canonical Technical Layer
+   - EMA 5 / 13 / 200
+   - RSI 7 (including zero-gain/zero-loss edge-case fix)
+   - ATR 14
+   - ADX 14
+
+2. Spartan Hard Gate for XAUUSD / USOIL
+   - ADX < 20 HOLD
+   - Gold ATR minimum 0.50
+   - Gold absolute spread max 0.50 plus existing spread/ATR gate
+   - 6/8 directional confluence
+   - confidence >= 0.70
+   - maximum 10 demo entries/day
+   - stale tick rejection
+   - fresh-entry drift rejection
+   - Gold London/New-York UTC sessions; Oil US session only
+
+3. SMC / Market Structure
+   - confirmed swing highs/lows
+   - BOS
+   - CHoCH
+   - FVG detection + age/distance/mitigation estimate
+   - heuristic Order Block zone (explicitly labelled heuristic)
+   - liquidity sweep detection
+   - nearest support/resistance + touch count
+   - London/NY kill-zone tags
+
+4. Order Flow / Volume
+   - broker MT5 DOM bid/ask volume
+   - bid_share / ask_share
+   - correct signed imbalance math
+   - 5s / 15s / 30s DOM persistence windows
+   - recent cumulative delta from MT5 tick stream
+   - broker aggressor flags when present
+   - clearly-labelled tick-direction proxy when aggressor flags are absent
+   - compact footprint-style price bins
+   - Volume Profile POC / VAH / VAL / HVN / LVN
+   - volume source explicitly labelled real-volume/tick-volume/proxy
+
+5. Multi-Timeframe Context
+   - M5 / M15 / H1 / H4 trend, RSI14, ADX14 context
+
+6. News / Macro Architecture
+   - provider-neutral config/news_events.json adapter
+   - relevant Gold macro events (USD/CPI/NFP/FOMC/PCE/Fed/GDP)
+   - relevant Oil events (EIA/OPEC/API/Crude + major USD macro)
+   - configurable pre-event and post-event lock
+   - stale/unconfigured feed status is explicit; no fake news data
+
+7. Multi-Agent / AI Layer
+   - deterministic specialist votes: technical, SMC, flow, macro, HTF,
+     volume-profile, ML
+   - existing SuperLearner remains the real online ML classifier
+   - optional OpenAI structured reviewer added as confirmation/veto only
+   - LLM cannot override Python hard gates, calculate lot size, or bypass risk
+
+8. Position Management
+   - DEMO-only break-even logic
+   - DEMO-only trailing stop logic using original stored R distance
+   - broker stop-level/digits checks before SL modification
+
+9. Operations
+   - reports/spartan_pro_last_<symbol>.json generated on live candidates
+   - 16_SPARTAN_PRO_STATUS.bat added
+   - optional Telegram trade notifications
+   - offline regression suite extended for Spartan deterministic engines
+
+INTENTIONALLY NOT FAKED / NOT ENABLED YET
+------------------------------------------
+A. Real economic calendar / headline sentiment provider
+   The adapter is complete, but no provider key/feed was supplied. The included
+   news file is UNCONFIGURED. SPARTAN_NEWS_HARD_GATE therefore defaults False so
+   the existing running demo bot is not frozen. Connect a reliable provider,
+   then set it True.
+
+B. OpenAI live reviewer
+   Code is complete but defaults OFF. Configure OPENAI_API_KEY + OPENAI_MODEL,
+   then enable SPARTAN_LLM_REVIEW_ENABLED. Structured output uses the current
+   OpenAI Responses parsing pattern. Python remains final safety authority.
+
+C. XGBoost / RandomForest / LSTM / GRU live models
+   These were NOT invented or dropped into execution without a trained,
+   out-of-sample validated model. The existing persistent online SuperLearner is
+   retained as the ML vote. Advanced offline models should only be promoted after
+   proper leakage-safe training, walk-forward testing, shadow and demo validation.
+
+D. COMEX GC / NYMEX CL central-market reference flow
+   The current system uses the broker's MT5 XAUUSD/USOIL DOM/ticks. A separate
+   futures data subscription/feed was not supplied, so no claim is made that MT5
+   CFD DOM represents the full global order book.
+
+E. Oil absolute ATR threshold
+   Gold 0.50 is implemented. Oil is left at 0.0 until the actual broker quote
+   format/history is calibrated; existing spread/ATR and regime filters still run.
+
+F. Forced 1.0 ATR SL / 1.5 ATR TP
+   The switch is implemented but defaults OFF because changing only live exits
+   would invalidate the existing backtest/live parity. Backtest dedicated Spartan
+   strategies with that geometry first, then enable SPARTAN_FORCE_FIXED_ATR_EXITS.
+
+VALIDATION COMPLETED IN THIS BUILD
+----------------------------------
+- Python compile checks passed.
+- Existing offline regression suite passed after repairing two stale test
+  assumptions that no longer matched the uploaded V7 settings.
+- New Spartan EMA/ADX, SMC, Volume Profile and gate wiring tests passed.
+- Synthetic bullish Gold gate test passed with correct RSI=100 edge behavior.
+- Existing trading_machine.db SHA-256 matched the uploaded original exactly.
+
+FIRST RUN RECOMMENDATION
+------------------------
+1. Extract the new ZIP to a new folder; keep your old working folder as backup.
+2. Run 01_INSTALL.bat (requirements now include OpenAI/Pydantic for optional AI).
+3. Run 10_OFFLINE_SELF_TEST.bat.
+4. Run 02_MT5_DIAGNOSTIC.bat.
+5. Run 16_SPARTAN_PRO_STATUS.bat.
+6. Run 12_PAPER_TEST_NO_ORDERS.bat and inspect reports/spartan_pro_last_*.json.
+7. Only then run 00_START_ALL_24_7_DEMO.bat on the DEMO account.
+
+No win-rate, fixed daily income, or profitability guarantee is implied by these
+features. The purpose of the added gates is to make decisions more structured,
+auditable and fail-safe, not to manufacture certainty.

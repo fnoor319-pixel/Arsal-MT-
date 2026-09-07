@@ -1,0 +1,42 @@
+V8.0 ARCHITECTURE REPORT
+
+OLD LIVE BOTTLENECK
+Research -> approved/trial scalp carrier -> signal -> filters -> Luna -> order
+If approved scalp=0 and only a few trial scalp carriers exist, the live engine can
+starve even when market micro-patterns exist.
+
+V8 LIVE ARCHITECTURE
+Research Brain (slow/deep, unchanged)
+  ||
+  \/
+Institutional Alpha Brain (fast)
+  - 5 specialist playbooks
+  - 2-5 candle context
+  - intrabar tick trigger after ARM
+  - adaptive symbol score distribution
+  - native DEMO carrier when research carrier is unavailable
+  \/
+Hard deterministic gates
+  \/
+Adaptive/Bayesian + hierarchical live learning
+  \/
+SuperLearner multi-evidence ensemble
+  \/
+Edge Recovery / weak-strategy quarantine
+  \/
+Local pre-Luna opportunity shortlist (zero API tokens)
+  \/
+Luna final second brain (compact one-message in, tiny answer out)
+  \/
+Risk / correlation / execution quality / capital-growth protection
+  \/
+MT5 DEMO execution
+  \/
+MFE/MAE + playbook + execution outcome learning
+
+API DESIGN
+- Restart health checks are local and zero-token.
+- Real network health test is manual only.
+- Luna receives only candidates that survive the local stack.
+- Fingerprint caching remains enabled for materially unchanged setups.
+- Max paid pretrade calls/day = 12; posttrade = 2.

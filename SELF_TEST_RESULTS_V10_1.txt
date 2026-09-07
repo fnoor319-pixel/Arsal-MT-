@@ -1,0 +1,16 @@
+V10.1 PARALLEL ROUTER VERIFICATION
+
+Python syntax compile: PASS
+Parallel setup selector simulation: PASS
+Router persistence/table simulation: PASS
+
+Verified routing cases:
+- V10-only setup -> V10 selected
+- same-side V10 stronger -> V10 selected
+- same-side legacy Hunter stronger -> Hunter selected
+- opposite V10 with clear bounded score edge -> V10 selected
+- near-tied opposite signal -> Hunter retained to avoid flip-flopping
+
+Trading database modified by package creation: NO
+API/Luna calls during verification: 0
+Martingale/loss-doubling added: NO

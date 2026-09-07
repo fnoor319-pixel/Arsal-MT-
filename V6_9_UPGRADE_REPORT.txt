@@ -1,0 +1,52 @@
+TRADING MACHINE V6.9 - EDGE RECOVERY SCALP LAB (DEMO ONLY)
+
+Problem observed from V6.8 runtime evidence
+- Aggregate recent-demo Monte Carlo was negative.
+- A large historical score could still dominate recent weak shadow evidence.
+- Some catastrophically weak shadow candidates waited too long for normal rejection.
+- The approved scalp pool could remain empty for a long time.
+
+What V6.9 changes
+1. Recent actual DEMO edge hierarchy
+   - strategy -> family -> symbol -> overall portfolio.
+   - strategy can be quarantined after repeated bad actual DEMO evidence.
+   - weak family/symbol/portfolio evidence reduces risk only; it does not permanently freeze the whole machine.
+
+2. Symbol-level Monte Carlo
+   - XAUUSDm, USOILm and BTCUSDm are evaluated separately.
+   - one weak symbol no longer has to define the whole machine's edge state.
+
+3. Shadow evidence re-ranking
+   - recent shadow mean-R receives much more weight in candidate ranking.
+   - strong backtest scores cannot easily hide a badly performing current-market shadow candidate.
+
+4. Early catastrophic shadow quarantine
+   - a strategy with >=8 shadow outcomes and mean <= -0.25R is skipped/demoted early.
+   - the original normal rejection rule remains as a second path.
+
+5. Strict scalp fast-track
+   - scalp only, DEMO only.
+   - requires >=20 shadow trades, mean >= +0.18R, PF >=1.40, DD <=2.5R,
+     OOS PF >=1.10 and stability >=0.70.
+   - this can grow the approved scalp pool faster without simply lowering the normal quality bar.
+
+6. Carefully widened DEMO trial pool
+   - candidate cap 20 -> 36.
+   - OOS minimum trades 20 -> 12, but OOS PF is raised to >=1.05.
+   - rejected/generated strategies are still non-executable.
+
+7. Luna/API protection unchanged
+   - edge-recovery filtering happens before the paid Luna call.
+   - weak candidates therefore do not consume API credit.
+   - no additional Luna calls were added.
+
+8. Risk philosophy unchanged
+   - no martingale.
+   - no risk increase to chase the 15/20 daily objective.
+   - all existing DEMO hard locks, daily-loss, drawdown, spread, Spartan, SuperLearner and Luna gates remain.
+
+New status tool
+- 28_EDGE_RECOVERY_STATUS.bat
+
+Important interpretation
+The old negative Monte Carlo result is historical evidence and will not disappear immediately after installing this patch. V6.9 changes selection/risk/learning behavior going forward. As new V6.9 trades close, the rolling window will replace old outcomes and show whether the edge is actually improving.

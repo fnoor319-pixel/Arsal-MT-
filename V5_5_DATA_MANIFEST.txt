@@ -1,0 +1,37 @@
+TRADING MACHINE V5.5 DATA PRESERVATION MANIFEST
+Generated: 2026-08-11
+
+The full V5.5 package preserves the uploaded current data snapshot.
+These four files are byte-for-byte unchanged from the user-uploaded ZIP:
+
+trading_machine.db
+SHA-256: e712c2b62d8cde0edb36fa365a484c8204280e0e046204b9f1ccbc9fd7362729
+
+data/USOILm/bars_M1.csv
+SHA-256: f8da7b9dd4a94fccf06361655c91448fd5df002316706d48e9590a7b73f51e9f
+
+data/BTCUSDm/bars_M1.csv
+SHA-256: 09f3a71f91e0a79572c1b7cf297e66c74e69c0136b1bb38c86b05ec20a8bc333
+
+data/XAUUSDm/bars_M1.csv
+SHA-256: 4b78bac540bb31d09630feb5d89a99b9bf3c574eebaad314115748c008f57e47
+
+Uploaded DB row snapshot before V5.5 additive migration:
+strategies=3448
+backtests=2898
+demo_positions=212
+strategy_scores=1285
+candidate_live_scores=509
+rl_reward_events=3944
+shadow_positions=3744
+
+Migration verification on a temporary copy:
+- all above core row counts remained unchanged
+- adaptive_trade_memory bootstrapped 74 setup cells / 212 observations
+- collective_market_memory bootstrapped 31 cells / 212.0 effective observations
+- SQLite PRAGMA integrity_check = ok
+
+IMPORTANT:
+The packaged database itself is intentionally NOT pre-migrated, so its original bytes remain
+unchanged. On first V5.5 start the application performs additive CREATE/ALTER operations and
+bootstraps new learning tables without deleting existing rows.

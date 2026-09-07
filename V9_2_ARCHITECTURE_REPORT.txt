@@ -1,0 +1,30 @@
+V9.2 ARCHITECTURE — EXECUTION-FIRST ADAPTIVE SCALPER
+
+LIVE PATH
+Micro Hunter trigger
+ -> hard account/news/cost/fresh-price locks
+ -> Spartan deterministic snapshot (context)
+ -> SuperLearner probability + Expected-R
+ -> V9.2 contextual overlay:
+      DOM/tick-flow + MTF + POC/volume profile + exhaustion + session
+      + symbol/playbook/side/regime/session broker memory
+      + rejected-trade calibration
+ -> bounded adaptive score + risk + execute floor
+ -> Luna advisory on selected top setups
+ -> correlation/execution-quality/capital-risk multipliers
+ -> dynamic ATR/MFE/MAE stop/target plan
+ -> MT5 order_check/order_send
+ -> partial scale-out / profit lock / trailing
+ -> adverse-flow early cut when thesis deteriorates
+ -> broker R + MFE + MAE
+ -> context memory + champion/challenger update
+ -> next trade adapts immediately
+
+LEARNING PRINCIPLE
+Hard safety rules are few. Intelligence layers are score/risk/exit evidence rather
+than a return to ten serial vetoes. Strong evidence receives modest preference;
+weak evidence is de-risked or raises the score floor within tight bounds.
+
+RECOVERY PRINCIPLE
+A losing trade is never rescued by doubling exposure. V9.2 may cut a deteriorating
+trade early. A reverse position requires a fresh opposite signal and normal bounded risk.

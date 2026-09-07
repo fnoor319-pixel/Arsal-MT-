@@ -1,0 +1,27 @@
+Trading Machine V6.0 SCALP INTELLIGENCE - Offline Self Test
+Build: 2026-08-20
+
+Database ready: /tmp/tm_parallel_test_d7wp3enn/test.db
+SHADOW APPROVED TEST | strategy=2 trend | Shadow approved after historical/OOS/walk-forward pass: trades=20, mean=0.060R, PF=1.20, DD=4.00R
+PASS: database schema and migration
+PASS: regime-guided strategy normalization
+PASS: anchored walk-forward evaluator
+PASS: strict execution selects shadow-approved strategies first
+PASS: merged legacy passers are eligible only for tiny-risk DEMO trial fallback
+PASS: historical -> live-shadow approval gate
+PASS: SQLite file handle released for Windows cleanup
+PASS: five split engine CLI commands are registered
+PASS: Windows consoles launch without CMD START quoting
+PASS: token-based READY handshake does not compare launcher/actual PID
+PASS: bootstrap cannot kill a healthy supervisor on marker timeout
+PASS: atomic runtime markers are outside the project/OneDrive path
+PASS: generator queue throttle and DEMO trial bridge are present
+PASS: persistent adaptive loss memory, cooldown and confidence recovery
+PASS: confidence-based risk multiplier only upscales after positive evidence
+PASS: adaptive risk can produce broker-valid volume above 0.01 when supported
+PASS: V6 collective + session family/regime memory and Bayesian posterior
+PASS: Hurst/entropy/concept-drift market quality metrics
+PASS: persistent online model updates and becomes active after warm-up
+PASS: dynamic ensemble multiplier consumes adaptive + collective/session evidence
+PASS: V6 scalp families, fast prescreen, session/sentiment and SuperLearner code paths are present
+OFFLINE SELF TEST PASSED

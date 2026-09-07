@@ -1,0 +1,15 @@
+V9.1 FOCUSED VERIFICATION: PASS
+
+- Python compile PASS: settings.py, v9_execution_first.py, trading_machine.py,
+  v9_1_learning_optimizer_status.py, offline_self_test.py.
+- V9_MAX_TRADES_PER_SYMBOL_PER_DAY = 50 verified.
+- V9_MAX_TRADES_PER_DAY = 150 verified.
+- PORTFOLIO_FREEZE_AFTER_LOSSES = 5 verified.
+- V9_MARTINGALE_ENABLED = False verified.
+- Weak 8-observation playbook memory produced a negative precision score delta.
+- Strong 12-observation playbook memory produced a positive score delta.
+- Strong fresh post-loss setup entered recovery mode with risk capped at 0.55x.
+- Trade-slot test: 49 BTC trades allowed; the 50th fills the ceiling and next is blocked.
+
+The user's installed full machine should still run 10_OFFLINE_SELF_TEST.bat after
+replacement, because only that environment contains the complete dependency set.

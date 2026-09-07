@@ -1,0 +1,61 @@
+SPARTAN-SCALPER-PRO V6.4 FINAL VERIFICATION
+============================================
+Build purpose: GPT-assisted XAUUSD/USOIL MT5 DEMO autotrading with existing V6 research/learning stack preserved.
+
+VERIFIED IN CODE / OFFLINE REGRESSION
+-------------------------------------
+PASS - Original trading_machine.db SHA-256 preserved from V6.3:
+       67363b0ad3d7e062c3ae748d3f7faad5c5951958e087758c331a2ef536d531a5
+PASS - requirements: MetaTrader5, pandas, numpy, openai, pydantic, python-dotenv, scikit-learn
+PASS - GPT enabled by default and fail-closed
+PASS - OpenAI Responses API + Pydantic structured parsing
+PASS - GPT reviewer schema is CONFIRM/HOLD only; direction reversal is impossible by schema
+PASS - GPT reviewer runs AFTER SuperLearner/ML and BEFORE deterministic risk sizing/execution
+PASS - Python-derived contextual fields added alongside raw market values
+PASS - Specialist roles: Technical, SMC, Flow, Macro, HTF, Volume Profile, Regime, ML
+PASS - Risk Manager remains a hard veto, not an AI vote
+PASS - Post-trade GPT analyst added; async/advisory only; no automatic live parameter mutation
+PASS - Post-trade reviews persist to SQLite + reports/post_trade JSON
+PASS - SMC: FVG, Order Block, BOS, CHoCH, liquidity sweep
+PASS - Volume Profile: POC, VAH, VAL, HVN, LVN
+PASS - DOM/order-book share + corrected signed imbalance convention
+PASS - broker tick cumulative delta + footprint-style aggregation when feed supports it
+PASS - M5/M15/H1/H4 context
+PASS - Gold PKT sessions: 15:00-23:30 and 20:00-03:00
+PASS - Oil PKT session: 20:00-03:00 only
+PASS - ADX < 20 hard HOLD; Gold ATR < 0.50 hard HOLD
+PASS - confluence >= 6/8 and confidence >= 0.70
+PASS - max Spartan trades/day = 10
+PASS - DEMO-only hard lock + order_check + order_send path retained
+PASS - fresh-price drift, broker constraints, lot sizing, daily loss/drawdown, trailing/break-even retained
+PASS - shadow-approved strategy pipeline + historical-validated DEMO trial fallback retained
+PASS - adaptive memory, collective/session memory, SuperLearner online update retained
+PASS - offline_self_test.py PASSED after V6.4 changes
+PASS - all top-level Python files compile
+PASS - XAUUSDm DB pool: 31 shadow-approved + 22 historical-validated
+PASS - USOILm DB pool: 119 historical-validated; DEMO trial bridge available
+
+ONE-CLICK START
+---------------
+Use 00_RUN_ME_DEMO.bat.
+It installs dependencies if needed, prompts for OpenAI key if missing, runs offline regression, then delegates to the verified startup path which checks GPT + MT5 DEMO + candidate pools before starting engines.
+
+EXTERNAL RUNTIME REQUIREMENTS (cannot be proven inside this Linux build environment)
+-------------------------------------------------------------------------------
+- Windows MT5 terminal installed/open
+- Broker DEMO account logged in
+- MT5 AutoTrading/Algo Trading allowed
+- Broker symbols XAUUSDm / USOILm (or matching configured names) available
+- Valid OPENAI_API_KEY with API billing/quota/access to configured model
+- Network access from the Windows machine
+
+NEWS CALENDAR STATUS
+--------------------
+A provider-neutral calendar interface is integrated and does not fabricate "no news" when unavailable.
+The included config/news_events.json is not a paid/live provider. SPARTAN_NEWS_HARD_GATE remains advisory OFF for DEMO operation unless a reliable fresh provider is attached.
+This is the one external data-source dependency not bundled with credentials.
+
+NO PERFORMANCE GUARANTEE
+------------------------
+The system can place DEMO orders automatically only when all gates approve. It never forces an immediate trade.
+No fixed win rate, daily profit, or "8 wins / 2 losses" guarantee is claimed.

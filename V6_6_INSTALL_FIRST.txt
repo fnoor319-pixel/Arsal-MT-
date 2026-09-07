@@ -1,0 +1,16 @@
+V6.6 QUICK INSTALL
+==================
+Recommended: use the CODE UPDATE ZIP on top of your existing V6.5 folder.
+
+1) Run 09_STOP_ALL_WINDOWS.bat
+2) Optional but recommended: run 15_BACKUP_LEARNING.bat
+3) Extract V6.6 CODE UPDATE ZIP into the existing TM_V6_SCALP_INTELLIGENCE_DEMO folder
+4) Replace files
+5) Keep your existing .env + trading_machine.db
+6) Run 10_OFFLINE_SELF_TEST.bat
+7) Run 18_TEST_GPT_CONNECTION.bat
+8) Run 22_SCALP_HEALTH.bat
+9) Run 00_RUN_ME_DEMO.bat
+
+The FULL ZIP excludes .env/API keys on purpose.
+DEMO ONLY. No profit is guaranteed.

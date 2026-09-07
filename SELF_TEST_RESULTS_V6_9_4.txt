@@ -1,0 +1,10 @@
+V6.9.4 EXPECTANCY-LUNA BRIDGE
+OFFLINE SELF TEST PASSED
+
+Key regression verified:
+- A high-R:R positive-expectancy scalp with P=0.367, threshold=0.400,
+  Expected-R=+0.578R and R:R=3.30 is eligible for the narrow Luna
+  second-opinion lane when no hard veto is present.
+- Hard Bayesian/market gates remain non-overridable.
+- Edge Recovery remains before paid Luna/API review.
+- Luna rescue remains confidence-gated, capped and reduced-risk.

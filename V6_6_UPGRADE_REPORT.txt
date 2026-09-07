@@ -1,0 +1,82 @@
+V6.6 TECHNICAL UPGRADE REPORT
+=============================
+
+SOURCE ANALYZED
+---------------
+Trading_Machine_V6_5_SPARTAN_PRO_GPT_LEARNING_DEMO_AUTOTRADE.zip
+Database analyzed read-only: supplied trading_machine.db
+
+ROOT CAUSE FOUND
+----------------
+The bot was not frozen. Generator/backtester/shadow engines were active. The execution pipeline was starved before GPT.
+
+Database evidence from 2026-08-30 onward:
+- demo decision rows: 273,538
+- No approved/trial entry: 263,157
+- live shadow opens: 5,785
+- spread vetoes: 3,054
+- Spartan vetoes: 456
+- SuperLearner vetoes: 1,086
+- DEMO broker orders: 0
+- GPT candidate reviews: 0
+- GPT usage events: 0
+
+By symbol:
+XAUUSDm: no-entry 88,947 | spread 26 | Spartan 253 | Super 25 | orders 0
+USOILm:  no-entry 87,481 | spread 1,516 | Spartan 203 | Super 51 | orders 0
+BTCUSDm: no-entry 86,729 | spread 1,512 | Spartan 0 | Super 1,010 | orders 0
+
+SuperLearner from 2026-08-30:
+- 1,086 decisions, all REJECT, zero APPROVE.
+- XAU probability median ~0.573, max ~0.576 vs median threshold 0.68.
+- USOIL probability median ~0.324, max ~0.511 vs median threshold 0.65.
+- BTC probability median ~0.432, max ~0.620 vs median threshold 0.68.
+
+Last supplied DEMO position:
+- ID 396, BTCUSDm
+- opened 2026-08-27T09:50:52Z
+- closed 2026-08-27T10:14:08Z
+- reward ~+0.884R, pnl +1.60
+
+RECENT PERFORMANCE CONTEXT
+--------------------------
+All 396 supplied demo positions: win rate ~48.7%, mean reward ~-0.0816R, total ~-32.3R.
+Since 2026-08-20: 79 trades, win rate ~35.4%, mean ~-0.0548R, total ~-4.33R.
+Since 2026-08-25: 18 trades, win rate 50%, mean ~+0.154R, total ~+2.78R.
+
+Interpretation: simply removing filters or forcing trades would not be justified by this evidence.
+The V6.6 change therefore targets only the execution dead-zone and keeps hard risk/market gates intact.
+
+DESIGN DECISION
+---------------
+OLD:
+valid setup -> hard gates -> adaptive -> SuperLearner -> (only if approved) GPT -> risk -> order
+
+Observed result:
+SuperLearner approved 0/1086 -> GPT got 0 trading reviews -> order path got 0 candidates.
+
+NEW:
+valid setup -> hard gates -> adaptive -> SuperLearner
+    -> APPROVE: compact GPT final review -> risk -> DEMO order
+    -> SOFT BORDERLINE ONLY: compact GPT second opinion -> >=0.78 confidence -> 0.35x risk -> DEMO order
+    -> HARD REJECT: still reject
+
+GPT is a supporting decision layer, not an unrestricted strategy generator and not a hard-risk override.
+
+TOKEN/LATENCY CONTROL
+---------------------
+- One compact request payload.
+- One tiny structured response.
+- Pretrade reasoning effort defaults to none.
+- material-state fingerprint cache prevents duplicate same-state calls.
+- daily pretrade API cap is 120.
+- response max output tokens is 160.
+- identical closed-bar NO-SIGNAL decisions are deduplicated instead of being written every 2 seconds.
+- posttrade payload is also compact and asynchronous.
+- store=False.
+
+VALIDATION
+----------
+Python compile: PASSED for all modified/new Python files.
+Existing project offline regression/self-test after patch: PASSED.
+No .env, API key, database, logs or user learning data is included in this hotfix package.

@@ -1,0 +1,40 @@
+V7.0 VALIDATION REPORT
+
+1. COMPLETE OFFLINE REGRESSION/SELF-TEST
+   RESULT: PASS
+   File: SELF_TEST_RESULTS_V7_0.txt
+
+V7-specific regression checks include:
+- specialist 2-5 candle micro setup detection
+- WATCH/ARM/TRIGGER lane wiring
+- scalp-only qualified carrier strategy requirement
+- V7 micro playbook broker-DEMO memory tables
+- MFE/MAE outcome learning
+- playbook memory never upscales risk above 1.0x
+- compact Luna packet includes micro context
+- existing hard-gate -> SuperLearner -> Edge Recovery -> Luna -> risk ordering retained
+
+2. OFFLINE OPPORTUNITY-SCORE CALIBRATION
+   Source: current cached M1 bars inside the user's machine snapshot.
+   Result file: V7_0_OFFLINE_CALIBRATION.txt
+
+Using current final immediate-trigger thresholds, the cached sample produced approximately:
+- XAUUSDm: 15.8 high-score immediate trigger bars / 24h before downstream gates
+- USOILm:   7.0 high-score immediate trigger bars / 24h before downstream gates
+- BTCUSDm: 16.4 high-score immediate trigger bars / 24h before downstream gates
+
+These are NOT trade-count or profit forecasts. Session, spread, Spartan, adaptive learning,
+SuperLearner, Edge Recovery, Luna and broker-risk gates reduce the final execution count.
+
+3. API COST ARCHITECTURE
+- Luna is not called by the raw market hunter.
+- Luna is downstream of local Python filters.
+- compact single dynamic packet
+- structured short response
+- prompt fingerprint/cache retained
+- local US$4 spend guard retained
+- max pre-trade paid calls reduced to 40/day
+- max post-trade calls reduced to 4/day
+
+4. ACCOUNT SAFETY
+DEMO hard lock is unchanged. Real/contest MT5 execution remains blocked.

@@ -1,0 +1,30 @@
+SPARTAN-SCALPER-PRO V6.5 - GPT DECISION MEMORY UPDATE
+
+ADDITIONS OVER V6.4 + V6.4.2 HOTFIX
+- Default API model changed to gpt-5.6-luna for cost-sensitive DEMO testing.
+- Material-state GPT fingerprint cache: same symbol/candle/direction/market state reuses the prior GPT review.
+- Meaningful price/ATR, flow, SMC, HTF, ML, regime or news changes create a fresh fingerprint and may call GPT again.
+- GPT vetoes create virtual shadow candidates only (NO broker order).
+- Veto shadows are marked against real MT5 prices until TP, SL or strategy max-hold timeout.
+- Veto saved-loss vs missed-winner outcomes calibrate persistent GPT decision memory.
+- Veto outcomes update SuperLearner and collective/session memory at reduced shadow weights.
+- Executed GPT-confirmed DEMO trades update GPT CONFIRM calibration when they close.
+- Future GPT reviews receive compact gpt_calibration_context so prior confirm/veto performance is visible as advisory evidence.
+- Pre-trade API safety cap: 200 actual GPT calls/day; fingerprint cache hits do not consume this cap.
+- OpenAI response token usage is persisted for pre-trade and post-trade calls.
+- 21_GPT_LEARNING_STATUS.bat shows calls, tokens, cache reuses, veto shadows and GPT decision calibration.
+- V6.4.2 fast dependency hotfix included: scikit-learn/SciPy are not mandatory for the current NumPy SuperLearner runtime.
+
+SAFETY
+- DEMO-only hard lock retained.
+- GPT remains final CONFIRM/HOLD reviewer only; no direction reversal.
+- GPT cannot mutate risk, lot sizing, session/news gates, SL/TP, drawdown or broker execution.
+- API/runtime failure remains fail-closed HOLD.
+- GPT post-trade hypotheses remain advisory and never auto-edit live parameters.
+
+OFFLINE VALIDATION
+- Full legacy offline_self_test retained and extended.
+- Duplicate same-state GPT call test PASS.
+- Material-state change fresh review test PASS.
+- Veto shadow idempotency test PASS.
+- Veto saved-loss calibration test PASS.

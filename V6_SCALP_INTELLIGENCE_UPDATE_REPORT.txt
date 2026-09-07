@@ -1,0 +1,56 @@
+V6.0 SCALP INTELLIGENCE UPDATE REPORT
+Build: 2026-08-20
+
+ROOT CAUSE FIXED
+----------------
+Previous selection could fill the approved candidate list with high-scoring trend strategies before scalp candidates were considered. Even when historical super-scalp candidates existed, the live executor could remain trend-heavy. V6 fixes routing: approved scalp -> eligible trial scalp -> approved general -> trial general.
+
+SCALP RESEARCH ENGINE
+---------------------
+1. Expanded scalp families:
+   super_scalp, scalp, micro_momentum, pullback_scalp, breakout_scalp, mean_revert_scalp.
+2. Regime-specific scalp-dominant generation weights.
+3. Live regime seeding also consumes collective + session memory.
+4. Evolution parent ranking prefers scalp candidates under scalp-primary mode.
+5. Two-stage backtesting for scalps:
+   - latest-window fast prescreen
+   - full history + OOS + walk-forward only if worth the compute
+6. Metrics added: expectancy-R, avg/median hold bars, trades/1000 bars.
+7. Scalp validation includes max holding-time discipline and scalp-specific PF/OOS gates.
+
+CONTEXT / 'SENTIMENT'
+---------------------
+- Market session tags: Asia, London, London/NY overlap, New York, off-hours; crypto-specific session tags.
+- Session-family memory is persistent per symbol/family/regime/session/direction.
+- Internal market sentiment proxy combines momentum/body/volume/DOM context.
+- SuperLearner can raise threshold when sentiment/session evidence conflicts and modestly lower it when strong scalp-session evidence supports the signal.
+- External news/social sentiment is intentionally not fabricated.
+
+LEARNING LOOP
+-------------
+- Existing adaptive_trade_memory, collective_market_memory and online SuperLearner model state retained.
+- DEMO closes now update session-family memory at full weight.
+- SHADOW closes update session-family memory at discounted weight.
+- Existing collective/adaptive/online learning remains active.
+- Feature vector kept backward compatible so V5.5 learned model weights are not discarded.
+
+RISK / UPTIME
+-------------
+- Peak DD broker-entry hard stop raised to 25% (DEMO only).
+- Daily loss hard stop set to 8%.
+- Portfolio loss-streak hard freeze disabled; risk multiplier de-risks instead.
+- Research/shadow engines continue learning if broker-entry risk guard blocks live DEMO orders.
+- Backtester uses its own 12% abort level to reject bad ideas quickly; it does not inherit the 25% runtime allowance.
+
+SPEED
+-----
+- Generator visible engine: faster cadence + more guided scalp hypotheses.
+- Backtester visible engine: larger batches + fast prescreen.
+- Shadow cadence: 5 sec.
+- Selector cadence: 15 sec.
+- Executor cadence: 2 sec.
+- Queue throttle retained to prevent uncontrolled SQLite/backtest backlog.
+
+DEMO SAFETY
+-----------
+Real/contest account hard block retained. No fixed daily profit is guaranteed. This build is a research/training/execution framework that prioritizes validated scalp edge rather than forced trading frequency.

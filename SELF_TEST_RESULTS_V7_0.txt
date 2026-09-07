@@ -1,0 +1,43 @@
+Database ready: /tmp/tm_parallel_test_had6a6t4/test.db
+SHADOW APPROVED TEST | strategy=2 trend | Shadow approved after historical/OOS/walk-forward pass: trades=40, mean=0.110R, PF=1.35, DD=3.00R
+PASS: database schema and migration
+PASS: regime-guided strategy normalization
+PASS: anchored walk-forward evaluator
+PASS: strict execution selects shadow-approved strategies first
+PASS: merged legacy passers are eligible only for tiny-risk DEMO trial fallback
+PASS: historical -> live-shadow approval gate
+PASS: SQLite file handle released for Windows cleanup
+PASS: five split engine CLI commands are registered
+PASS: Windows consoles launch without CMD START quoting
+PASS: token-based READY handshake does not compare launcher/actual PID
+PASS: bootstrap cannot kill a healthy supervisor on marker timeout
+PASS: atomic runtime markers are outside the project/OneDrive path
+PASS: generator queue throttle and DEMO trial bridge are present
+PASS: persistent adaptive loss memory, cooldown and confidence recovery
+PASS: confidence-based risk multiplier only upscales after positive evidence
+PASS: adaptive risk can produce broker-valid volume above 0.01 when supported
+PASS: V6 collective + session family/regime memory and Bayesian posterior
+PASS: Hurst/entropy/concept-drift market quality metrics
+PASS: persistent online model updates and becomes active after warm-up
+PASS: dynamic ensemble multiplier consumes adaptive + collective/session evidence
+PASS: V6 scalp families, fast prescreen, session/sentiment and SuperLearner code paths are present
+PASS: GPT/OpenAI structured Responses wiring is enabled and confidence-gated
+PASS: GPT final reviewer runs after SuperLearner and before deterministic risk sizing
+PASS: GPT post-trade analyst is advisory-only and asynchronously journaled
+PASS: GPT material-state fingerprint cache prevents duplicate API calls
+PASS: GPT veto shadow outcomes calibrate reviewer and reduced-weight ML memory
+PASS: Spartan-Pro EMA/ADX, SMC and Volume Profile deterministic feature engine
+PASS: Spartan-Pro live hard-gate and DEMO trailing manager are wired
+PASS: V6.8 soft-borderline Luna lane cannot override hard rejects
+PASS: V6.8 Monte Carlo scalp-lab risk simulation
+PASS: V6.8 compact Luna packet includes mode + opportunity + capital context
+PASS: V6.8 Luna model + local bot-budget/output caps
+PASS: V6.8 15/20 daily capital-growth objective protects gains without target-chasing risk
+PASS: V6.9 edge recovery runs before Luna/API and never martingales
+PASS: V6.9 symbol-level Monte Carlo and shadow-evidence re-ranking are wired
+PASS: V6.9 strict scalp fast-track + early weak-strategy quarantine are wired
+PASS: V7 micro-scalp hunter detects specialist 2-5 candle opportunities
+PASS: V7 WATCH/ARM/TRIGGER high-attention lane is wired without bypassing qualified carrier strategies
+PASS: V7 playbook MFE/MAE learning uses broker-DEMO outcomes only and never upscales risk
+PASS: V7 compact Luna packet carries micro playbook context while token caps remain enforced
+OFFLINE SELF TEST PASSED

@@ -1,0 +1,6 @@
+MetaTrader5>=5.0.6090
+pandas>=2.2,<4
+numpy>=1.26,<3
+openai>=1.68,<3
+pydantic>=2,<3
+python-dotenv>=1.0,<2

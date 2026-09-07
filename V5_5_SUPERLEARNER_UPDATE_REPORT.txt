@@ -1,0 +1,112 @@
+TRADING MACHINE V5.5 SUPERLEARNER UPDATE REPORT
+Generated: 2026-08-11
+
+SOURCE / DATA PRESERVATION
+- Source package: Trading_Machine_FINAL_MERGED_V5_3_DEMO_SAFE.zip
+- The uploaded package already contained V5.4 adaptive code plus a newer current DB snapshot.
+- Final V5.5 package keeps the uploaded trading_machine.db and all M1 CSV files byte-for-byte unchanged.
+- First startup performs additive SQLite migration only; no existing strategy/backtest/demo/shadow/reward row is deleted/reset.
+
+UNCHANGED DATA SHA-256
+- trading_machine.db: e712c2b62d8cde0edb36fa365a484c8204280e0e046204b9f1ccbc9fd7362729
+- data/USOILm/bars_M1.csv: f8da7b9dd4a94fccf06361655c91448fd5df002316706d48e9590a7b73f51e9f
+- data/BTCUSDm/bars_M1.csv: 09f3a71f91e0a79572c1b7cf297e66c74e69c0136b1bb38c86b05ec20a8bc333
+- data/XAUUSDm/bars_M1.csv: 4b78bac540bb31d09630feb5d89a99b9bf3c574eebaad314115748c008f57e47
+
+UPLOADED DATABASE SNAPSHOT
+- strategies: 3448
+- backtests: 2898
+- demo_positions: 212 (all closed in uploaded snapshot)
+- stored DEMO PnL: -54.32
+- stored average DEMO reward: -0.08234R
+- shadow_positions: 3744 (3732 closed / 12 open in uploaded snapshot)
+- strategy_scores: 1285
+- candidate_live_scores: 509
+- rl_reward_events: 3944
+
+V5.5 ADDITIONS
+1. SuperLearner final approval authority inside existing Screen 5.
+2. Persistent collective_market_memory keyed by symbol + family + regime + direction.
+3. Existing DEMO outcomes bootstrap collective memory once; future DEMO outcomes weight 1.0.
+4. Live-shadow outcomes feed collective memory at discounted weight (default 0.35).
+5. Dynamic ensemble multipliers combine setup confidence, rolling recent outcomes,
+   Bayesian loss probability and shared family/regime performance.
+6. Generator family weights are nudged by shared current-regime experience while
+   retaining random exploration.
+7. Evolution parent ranking now includes collective live/shadow reward evidence.
+8. Persistent lightweight online logistic classifier (global + symbol models),
+   implemented using NumPy so no sklearn/XGBoost dependency is added.
+9. Online model learns after feature-rich DEMO closes and discounted shadow closes.
+10. Model warm-up: no model veto until minimum updates; adaptive/Bayesian/market
+    protections remain active during warm-up.
+11. Enhanced MT5 DOM microstructure: imbalance, persistence, change, pressure score
+    and simple price-vs-book absorption clue when broker DOM is available.
+12. Hurst exponent and normalized return entropy market-noise measurements.
+13. Concept-drift score from short/long volatility + ATR change and spread stress.
+14. Drift-driven online-model forgetting and risk reduction.
+15. Bayesian P(loss) with recent-outcome weighting and temporary dynamic quarantine.
+16. Adaptive SL/TP bounded multipliers based on trend/noise/drift/prediction/shared memory.
+17. MFE/MAE R tracking on open DEMO positions and exit-efficiency feedback.
+18. XAI decision table with APPROVE/REJECT reason, probabilities, market metrics,
+    DOM score, feature vector, SL/TP and risk multipliers.
+19. Recent-loss common-condition analyzer can raise the current approval threshold.
+20. Portfolio-level early de-risking: watch/cautious/defensive risk multipliers before the
+    existing hard daily/drawdown limits, plus a 4-loss / 20-minute account-wide freeze.
+21. Decision latency is measured and reported (including p95 over recent decisions) so the
+    proactive layer can be monitored for scalping overhead.
+22. Existing V5.4 adaptive setup memory, duplicate blocker, confidence, cooldown,
+    ranking and confidence-based lot sizing retained.
+
+INTENTIONALLY NOT ENABLED IN LIVE DEMO EXECUTION
+- PPO/Deep-RL exploration
+- source-code self rewriting
+- random live parameter mutation every N trades
+- blind risk increase after a winning streak
+- automatic SL doubling in high entropy
+These are deliberately kept out of the execution path because they can add uncontrolled
+exploration/overfitting. The existing shadow lab + generator/backtester/evolution remain
+safe research/exploration layers.
+
+RISK / ACCOUNT SAFETY RETAINED
+- DEMO_ONLY_HARD_LOCK remains enabled.
+- Real/contest accounts remain blocked.
+- Approved base risk remains 0.15% equity; existing 0.50% hard minimum-lot ceiling remains.
+- Trial base risk remains 0.05%; existing 0.35% hard ceiling remains.
+- Daily loss guard and peak drawdown guard remain authoritative.
+- Broker stop-distance / min / max / step sizing remains authoritative.
+- Volume may exceed 0.01 only if all existing evidence/risk/broker conditions allow it.
+
+MIGRATION TEST ON COPY OF UPLOADED DB
+Before and after migration row counts remained identical for:
+- strategies 3448
+- backtests 2898
+- demo_positions 212
+- strategy_scores 1285
+- candidate_live_scores 509
+After migration on a temporary copy:
+- adaptive_trade_memory: 74 setup cells / 212 bootstrapped DEMO observations
+- collective_market_memory: 31 cells / 212.0 effective DEMO observations
+- SuperLearner model rows: 0 at bootstrap because uploaded pre-V5.4 DB rows contain no
+  feature-rich context_json; model therefore warms from new V5.5 DEMO/shadow observations.
+- SQLite integrity_check: ok
+- Original packaged DB hash remained unchanged during verification.
+
+VERIFICATION COMPLETED
+- Python syntax compilation passed.
+- Offline self-test passed.
+- Additive migration/data-preservation test passed.
+- V5.4 adaptive cooldown/recovery/risk-upscale tests passed.
+- Collective-memory/Bayesian tests passed.
+- Hurst/entropy/drift metric tests passed.
+- Persistent online model warm-up/update/prediction test passed.
+- Dynamic ensemble multiplier test passed.
+- Demo position registration with V5.5 columns test passed.
+- SuperLearner predict + XAI decision insert test passed.
+- SuperLearner latency column/SQL insert/status p95 test passed.
+- Temporary-copy SQLite integrity_check returned ok after migration and decision logging.
+
+IMPORTANT
+No code can guarantee profit or reproduce the judgement of 10,000 human traders. The
+10,000 target is an experience-bank target: the collective memory can accumulate many
+strategy/shadow/DEMO outcomes and transfer useful regime/family evidence across strategies.
+Performance must be judged by out-of-sample and forward DEMO results, not by the feature count.

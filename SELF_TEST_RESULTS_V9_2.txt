@@ -1,0 +1,13 @@
+V9.2 FOCUSED VERIFICATION
+
+PASS: Python syntax compile for settings.py, v9_execution_first.py,
+      v9_2_adaptive_scalper.py, trading_machine.py and status script.
+PASS: 100 trades/symbol/day and 300/day total configured as safety ceilings.
+PASS: five-loss / 15-minute freeze remains.
+PASS: new context starts at max 0.25x risk and ramps with actual broker evidence.
+PASS: aligned DOM + tick-flow + M5/M15 context creates bounded positive score bias.
+PASS: contextual broker outcomes update win/meanR/EWMA/MFE/MAE memory.
+PASS: dynamic exit planner produces ATR-adaptive target and two partial stages.
+PASS: rejected virtual trial can close to a counterfactual R without an MT5 order.
+PASS: martingale remains disabled.
+PASS: V9.2 overlay changes score/risk/floor; it does not become a generic hard veto.

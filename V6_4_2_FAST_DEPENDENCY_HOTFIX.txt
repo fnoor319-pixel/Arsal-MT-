@@ -1,0 +1,13 @@
+Spartan-Scalper-Pro V6.4.2 Fast Dependency Hotfix
+
+Purpose:
+- Removes scikit-learn/SciPy from mandatory runtime installation.
+- Current production/demo trading path does not import sklearn.
+- Existing SuperLearner is NumPy-based and remains unchanged.
+- GPT, MT5, pandas, numpy, pydantic, and python-dotenv remain mandatory.
+
+Install:
+1. Stop the current pip download with Ctrl+C.
+2. Copy requirements.txt and ensure_dependencies.py into TM_V6_SCALP_INTELLIGENCE_DEMO.
+3. Choose Replace when Windows asks.
+4. Run 00_RUN_ME_DEMO.bat again.

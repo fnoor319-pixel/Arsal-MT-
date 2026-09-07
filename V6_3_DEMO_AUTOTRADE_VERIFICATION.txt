@@ -1,0 +1,49 @@
+SPARTAN-SCALPER-PRO V6.3 DEMO AUTOTRADE VERIFICATION
+=====================================================
+
+Verified defaults
+-----------------
+ENABLE_DEMO_ORDER_EXECUTION = True
+DEMO_ONLY_HARD_LOCK = True
+SPARTAN_LLM_REVIEW_ENABLED = True
+SPARTAN_LLM_FAIL_CLOSED = True
+ENABLE_DEMO_TRIAL_BRIDGE = True
+GPT_MODEL default = gpt-5.6-terra
+
+Candidate pools in preserved trading_machine.db
+------------------------------------------------
+XAUUSDm: 31 shadow_approved + 22 historical_validated
+USOILm: 0 shadow_approved + 119 historical_validated
+
+Execution behavior
+------------------
+- XAUUSDm prefers shadow-approved strategies.
+- USOILm can use the historical-validated DEMO trial fallback because it has no shadow-approved strategies yet.
+- DEMO trial risk target remains DEMO_TRIAL_RISK_PER_TRADE = 0.0005 (0.05% equity), with its separate hard ceiling.
+- Normal approved-strategy target remains RISK_PER_TRADE = 0.0015 (0.15% equity), subject to broker minimum lot and risk ceilings.
+- GPT must confirm the same candidate direction with confidence >= 0.70 or the trade is vetoed.
+- Risk/session/data-quality/Spartan/SuperLearner/fresh-price gates remain authoritative.
+- mt5.order_check() runs before mt5.order_send().
+- Current MT5 account must be DEMO; real/contest mode is hard-blocked.
+- Starting the bot does NOT force a trade. No eligible setup = HOLD/no order.
+
+Startup
+-------
+00_START_ALL_24_7_DEMO.bat now runs:
+1) MT5 diagnostic
+2) GPT connection test
+3) DEMO autotrade readiness check
+4) five-engine supervisor, including MT5 DEMO executor
+
+New manual readiness command:
+19_DEMO_AUTOTRADE_READINESS.bat
+
+Known deliberate limitation
+----------------------------
+The economic-calendar adapter exists, but a live provider is not bundled. SPARTAN_NEWS_HARD_GATE remains False so DEMO testing can run without a calendar feed. Therefore this build must NOT be described as fully news-safe or 100% production-grade until a reliable live calendar provider is connected and validated.
+
+Regression
+----------
+Python syntax compile: PASS
+offline_self_test.py: PASS
+Existing trading_machine.db was not modified by this V6.3 patch.

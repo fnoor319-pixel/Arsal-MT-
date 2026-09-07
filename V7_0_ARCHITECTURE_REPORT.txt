@@ -1,0 +1,69 @@
+V7.0 MICRO-SCALP HUNTER ARCHITECTURE REPORT
+
+MARKET
+  -> Research candidate pool (qualified scalp carriers only)
+  -> V7 Micro Hunter scans 2-5 candle structures
+  -> WATCH
+  -> ARM
+  -> live-tick high-attention trigger during next minute
+  -> TRIGGER
+  -> qualified scalp carrier selection
+  -> spread / session / Spartan hard market gates
+  -> adaptive execution learning / Bayesian protection
+  -> SuperLearner expected-R + R:R calibration
+  -> V6.9 Edge Recovery strategy/family/symbol protection
+  -> Luna compact final second opinion
+  -> portfolio/correlation/execution-quality soft risk
+  -> deterministic cash risk sizing
+  -> MT5 DEMO broker order
+  -> playbook-specific break-even/trailing management
+  -> broker-DEMO close
+  -> MFE/MAE + reward-R playbook learning
+
+KEY V7 DIFFERENCE
+-----------------
+The old execution path mostly waited for exact strategy row_signal conditions on a newly
+closed M1 candle. V7 adds a specialist execution brain that recognizes market structures
+and can arm a setup, then react to a live-tick continuation inside the next minute.
+
+The hunter does NOT invent an executable strategy. It borrows only an existing qualified
+scalp strategy from the shadow-approved / historical-validated DEMO trial pool. This keeps
+the research/evidence chain connected to execution.
+
+MICRO PLAYBOOKS
+---------------
+Momentum Burst:
+  strong body + volume + ADX/momentum + trend alignment.
+
+Impulse/Pullback/Resume:
+  3-candle sequence: impulse -> controlled pullback -> resumption.
+
+Squeeze Breakout:
+  compressed recent ranges -> volatility expansion -> structural break.
+
+Wick Rejection:
+  liquidity-extreme rejection with wick/close-position/RSI evidence.
+
+Exhaustion Snapback:
+  extension in one direction followed by rejection/reversal evidence.
+
+SYMBOL-SPECIFIC SCORE GATES
+---------------------------
+XAUUSDm: WATCH 84 / ARM 88 / immediate TRIGGER 92
+USOILm:  WATCH 86 / ARM 90 / immediate TRIGGER 94
+BTCUSDm: WATCH 84 / ARM 88 / immediate TRIGGER 92
+
+Oil is intentionally stricter because recent broker-DEMO evidence and spread behaviour
+were weaker in the user's current database.
+
+RISK
+----
+V7 does not add martingale, loss-doubling or target-chasing risk.
+A micro-hunter trade has its own soft risk multiplier <= 1.0x, and all older hard ceilings
+remain authoritative. The 15% / 20% daily growth values remain objectives/protection phases,
+not a reason to force a trade or increase risk.
+
+LUNA
+----
+Luna sees the micro playbook context plus the existing quant/market/learning context.
+It still cannot set lot size, SL/TP, daily limits or bypass deterministic gates.

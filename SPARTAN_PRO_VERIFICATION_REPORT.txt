@@ -1,0 +1,64 @@
+SPARTAN-SCALPER-PRO V6.2 VERIFICATION REPORT
+=============================================
+
+DEPENDENCIES
+[PASS] openai
+[PASS] MetaTrader5
+[PASS] pandas
+[PASS] numpy
+[PASS] scikit-learn (installed as baseline/future ML dependency)
+[PASS] python-dotenv
+[PASS] pydantic structured output validation
+
+SETTINGS / SAFETY
+[PASS] OPENAI_API_KEY loaded from local .env/environment, never hardcoded
+[PASS] GPT_MODEL default gpt-5.6-terra and configurable via OPENAI_MODEL
+[PASS] SPARTAN_LLM_REVIEW_ENABLED=True
+[PASS] CONFIDENCE_THRESHOLD=0.70
+[PASS] ATR_PERIOD=14
+[PASS] RISK_PERCENT=0.5 hard maximum reference; existing target remains safer 0.15%
+[PASS] MAX_DAILY_DRAWDOWN=5.0 reference; live daily-loss gate remains stricter 2%
+[PASS] MAX_DRAWDOWN_PCT tightened to 5%
+[PASS] Pakistan sessions: London 15:00-23:30, NY 20:00-03:00; USOIL NY only
+[PASS] DEMO_ONLY_HARD_LOCK=True
+
+GPT / SIGNAL PIPELINE
+[PASS] Spartan master system prompt present in spartan_llm.py
+[PASS] OpenAI Responses API + Pydantic structured output
+[PASS] GPT final confirm/HOLD decision; no direction reversal permitted
+[PASS] confidence >= 0.70 required
+[PASS] fail-closed on missing key/API/model/runtime error
+[PASS] 00_START_ALL_24_7_DEMO.bat performs GPT preflight before supervisor start
+[PASS] 17_CONFIGURE_GPT.bat securely writes local .env
+[PASS] 18_TEST_GPT_CONNECTION.bat performs a real API connectivity test
+
+MARKET / SPARTAN FEATURES
+[PASS] EMA5/EMA13/EMA200, RSI7, ATR14, ADX14
+[PASS] ADX < 20 hard veto
+[PASS] 6/8 deterministic confluence
+[PASS] DOM market_book_get integration in trading_machine.py
+[PASS] 60% bid/ask share math represented as +/-20% signed imbalance
+[PASS] tick-flow/cumulative delta proxy with source labelling
+[PASS] SMC: FVG, order block, BOS, CHoCH, liquidity sweep
+[PASS] volume profile: POC/VAH/VAL/HVN/LVN
+[PASS] higher timeframe context
+[PASS] session filter and max-trades/day gate
+[PASS] news adapter + pre/post cooldown; provider still must supply fresh calendar data
+
+EXECUTION / LEARNING
+[PASS] mt5.order_check before mt5.order_send
+[PASS] DEMO-only broker execution
+[PASS] adaptive learning + persistent SQLite memory
+[PASS] SuperLearner online model remains active after GPT confirmation
+[PASS] backup_learning.py performs SQLite online backup
+[PASS] engine_window.py runs continuously (5/20-second watchdog loop; strategy timing is internal)
+
+ARCHITECTURE NOTE
+machine_supervisor.py is intentionally a process supervisor, not the trading brain.
+The actual decision/execution brain is trading_machine.py + spartan_pro.py + spartan_llm.py.
+Moving GPT/order-flow logic into machine_supervisor.py would duplicate responsibilities and make the system less reliable.
+
+KNOWN EXTERNAL DEPENDENCY
+A live economic-calendar provider is not bundled because no provider/API credential was supplied.
+The adapter exists, and Python can hard-gate news once a trusted feed writes fresh events.
+Do not treat an unavailable news feed as verified safe.
